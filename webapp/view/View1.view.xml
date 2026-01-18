@@ -8,9 +8,7 @@
     height="100%"
     controllerName="cos.qmc.views.qmcviewdemo.controller.View1">
     
-    
-
-    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showFooter="true">
+    <ObjectPageLayout id="ObjectPageLayout1" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showFooter="true">
 
         <headerTitle>
             <ObjectPageDynamicHeaderTitle>
@@ -20,13 +18,13 @@
                 <snappedHeading>
                     <m:Title text="Cosol - Quick Material Create" wrapping="true"/>
                 </snappedHeading>
-<navigationActions>
-                <m:Button 
-                    icon="sap-icon://nav-back" 
-                    type="Transparent" 
-                    press="onNavBack" 
-                    tooltip="Back"/>
-            </navigationActions>
+                    <navigationActions>
+                        <m:Button 
+                          icon="sap-icon://nav-back" 
+                          type="Transparent" 
+                          press="onNavBack" 
+                          tooltip="Back"/>
+                    </navigationActions>
                 <actions>
                     <m:Button text="Refresh/Select Data" icon="sap-icon://refresh" type="Emphasized" press="onRefresh" />
                      
@@ -38,7 +36,7 @@
 <m:VBox width="450px" class="sapUiNoContentPadding">
     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
         <m:Label text="Template Material" width="150px" />
-        <m:Select id="country" selectedKey="{Country}" width="240px">
+        <m:Select id="product1" selectedKey="{Product}" width="240px">
             <m:items>
                 <core:Item key="ID001" text="Product Alpha (ID001)" />
                 <core:Item key="ID002" text="Product Beta (ID002)" />
@@ -154,7 +152,7 @@
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
-                            <m:Table id="itemsTable">
+                            <m:Table id="itemsTable1.1">
                                 <m:columns>
                                     <m:Column><m:Text text="Create for Plant" /></m:Column>
                                     <m:Column><m:Text text="Plant" /></m:Column>
@@ -204,7 +202,7 @@
                     <ObjectPageSubSection>
                         <blocks>
 
-                            <m:Table id="itemsTable3" sticky="HeaderToolbar,ColumnHeaders">
+                            <m:Table id="itemsTable1.2" sticky="HeaderToolbar,ColumnHeaders">
                                 <m:columns>
                                     <m:Column><m:Text text="ValA" /></m:Column>
                                     <m:Column><m:Text text="Val. Type" /></m:Column>

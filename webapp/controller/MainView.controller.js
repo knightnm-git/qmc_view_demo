@@ -4,6 +4,8 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("cos.qmc.views.qmcviewdemo.controller.MainView", {
+
+        
         onGoToList: function () {
             debugger;
             this.getOwnerComponent().getRouter().navTo("RouteView1");

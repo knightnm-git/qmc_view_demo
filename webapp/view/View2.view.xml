@@ -1,13 +1,287 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="cos.qmc.views.qmcviewdemo.controller.View2">
-    <Page title="View 2" showNavButton="true" navButtonPress="onNavBack">
-        <headerContent>
-            <Button icon="sap-icon://home" press="onNavBack" />
-        </headerContent>
-        <content>
-            <Table>
-                <columns><Column><Text text="Demo Item 2"/></Column></columns>
-                <items><ColumnListItem><cells><Text text="Sample Data 2"/></cells></ColumnListItem></items>
-            </Table>
-        </content>
-    </Page>
+<mvc:View 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    height="100%"
+    controllerName="cos.qmc.views.qmcviewdemo.controller.View2">
+    
+    <ObjectPageLayout id="ObjectPageLayout2" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showFooter="true">
+
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title text="Cosol - Quick Material Create" wrapping="true"/>
+                </expandedHeading>
+                <snappedHeading>
+                    <m:Title text="Cosol - Quick Material Create" wrapping="true"/>
+                </snappedHeading>
+                    <navigationActions>
+                        <m:Button 
+                          icon="sap-icon://nav-back" 
+                          type="Transparent" 
+                          press="onNavBack" 
+                          tooltip="Back"/>
+                    </navigationActions>
+                <actions>
+                    <m:Button text="Refresh/Select Data" icon="sap-icon://refresh" type="Emphasized" press="onRefresh" />
+                     
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+<headerContent>
+<m:VBox width="450px" class="sapUiNoContentPadding">
+    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+        <m:Label text="Template Material" width="150px" />
+        <m:Select id="country" selectedKey="{Country}" width="240px">
+            <m:items>
+                <core:Item key="ID001" text="Product Alpha (ID001)" />
+                <core:Item key="ID002" text="Product Beta (ID002)" />
+                <core:Item key="ID003" text="Product Gamma (ID003)" />
+            </m:items>
+        </m:Select>
+    </m:HBox>
+
+    <m:HBox alignItems="Center">
+        <m:Label text="Test Run" width="150px" />
+        <m:Switch state="true" customTextOn="Yes" customTextOff="No" />
+    </m:HBox>
+</m:VBox>
+</headerContent>
+
+
+        <sections>
+            <ObjectPageSection title="Header/Client Data">
+          
+        <subSections>
+            <ObjectPageSubSection >
+
+            <l:Grid defaultSpan="L6 M6 S12" vSpacing="0" hSpacing="0">
+        <l:content>
+            
+            <m:VBox>
+                <m:items>
+                    
+                    
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Material" width="140px" textAlign="Begin" />
+                        <m:Text text="generated on save" width="100%" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Description" width="140px" textAlign="Begin" />
+                        <m:Input value="{/field2}" placeholder="provide a description...." width="240px" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Material Type" width="140px" textAlign="Begin" />
+                        <m:Text text="ROH" width="100%" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Material Group" width="140px" textAlign="Begin" />
+                        <m:Input value="L002" width="80px" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Base Unit" width="140px" textAlign="Begin" />
+                        <m:Input value="PC" width="50px" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Gross Weight" width="140px" textAlign="Begin" />
+                        <m:Input value="0.500" width="100px" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Net Weight" width="140px" textAlign="Begin" />
+                        <m:Input value="0.400" width="100px" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Unit of Weight" width="140px" textAlign="Begin" />
+                        <m:Input value="KG" width="50px" />
+                    </m:HBox>
+                </m:items>
+            </m:VBox>
+
+            <m:VBox>
+                <m:items>
+                  
+                    
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Manufacturer" width="140px" textAlign="Begin" />
+                        <m:Input value="{/field9}" width="90px" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Mfr Part Number" width="140px" textAlign="Begin" />
+                        <m:Input value="{/field10}" width="110px" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Label 11" width="140px" textAlign="Begin" />
+                        <m:Input value="{/field11}" width="100%" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Label 12" width="140px" textAlign="Begin" />
+                        <m:Input value="{/field12}" width="100%" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Label 13" width="140px" textAlign="Begin" />
+                        <m:Input value="{/field13}" width="100%" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Label 14" width="140px" textAlign="Begin" />
+                        <m:Input value="{/field14}" width="100%" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Label 15" width="140px" textAlign="Begin" />
+                        <m:Input value="{/field15}" width="100%" />
+                    </m:HBox>
+                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                        <m:Label text="Label 16" width="140px" textAlign="Begin" />
+                        <m:Input value="{/field16}" width="100%" />
+                    </m:HBox>
+                </m:items>
+            </m:VBox>
+
+        </l:content>
+    </l:Grid>
+                
+            </ObjectPageSubSection>
+        </subSections>
+    
+            </ObjectPageSection>
+
+            <ObjectPageSection title="Plant Data">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <t:Table id="itemsTable2.1"
+    rows="{demo>/demoItems}"
+    columnHeaderHeight="30"
+    selectionMode="None"
+    alternateRowColors="true"
+    enableSelectAll="false"
+    >
+    <t:columns>
+        <t:Column width="8rem">
+            <m:Label text="Create for Plant" />
+            <t:template>
+                <m:CheckBox selected="true" />
+            </t:template>
+        </t:Column>
+
+        <t:Column width="6rem">
+            <m:Label text="Plant" />
+            <t:template>
+                <m:Text text="{demo>PlantID}"/>
+            </t:template>
+        </t:Column>
+
+        <t:Column width="6rem">
+            <m:Label text="MRP Type" />
+            <t:template>
+                <m:Input value="{demo>MrpType}" />
+            </t:template>
+        </t:Column>
+
+        <t:Column width="6rem">
+            <m:Label text="Lot Sizing" />
+            <t:template>
+                <m:Input value="{demo>LotSize}" />
+            </t:template>
+        </t:Column>
+
+        <t:Column width="7rem">
+            <m:Label text="ST ExtProc" />
+            <t:template>
+                <m:Input value="{demo>StExtProc}" />
+            </t:template>
+        </t:Column>
+
+        <t:Column width="10rem">
+            <m:Label text="Storage Bin" />
+            <t:template>
+                <m:Input value="{demo>StorageBin}" placeholder="Enter Bin..." />
+            </t:template>
+        </t:Column>
+
+        <t:Column width="5rem">
+            <m:Label text="Critical" />
+            <t:template>
+                <m:CheckBox selected="{demo>isCritical}" />
+            </t:template>
+        </t:Column>
+
+        <t:Column width="5rem">
+            <m:Label text="PDT" />
+            <t:template>
+                <m:Text text="{demo>PdtValue}" />
+            </t:template>
+        </t:Column>
+    </t:columns>
+</t:Table>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+                        <ObjectPageSection title="Valuation Data">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+
+                            <m:Table id="itemsTable2.2" sticky="HeaderToolbar,ColumnHeaders">
+                                <m:columns>
+                                    <m:Column><m:Text text="ValA" /></m:Column>
+                                    <m:Column><m:Text text="Val. Type" /></m:Column>
+                                    <m:Column><m:Text text="Pr." /></m:Column>
+                                    <m:Column><m:Text text="MvAvgPrice" /></m:Column>
+                                    <m:Column><m:Text text="Std Price" /></m:Column>
+                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="Pr Unit" /></m:Column>
+                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="ValCl" /></m:Column>
+                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="ValCat" /></m:Column>
+                            </m:columns>
+
+                    <m:items>
+                        <m:ColumnListItem>
+                            <m:cells>
+                                 
+                                <m:Text text="3010" />
+                                <m:Text width="3rem" />
+                                <m:Text text="S" width="3rem" />
+                                <m:Text text="0.0000" width="6rem"  />
+                                <m:Input value="2.32" width="6rem"/>
+                                <m:Input value="1" width="1rem"/>
+                                <m:Input value="3000" width="5rem"/>
+                                <m:Text text=" " width="3rem" />
+                            </m:cells>
+                        </m:ColumnListItem>
+                    
+                        <m:ColumnListItem>
+                            <m:cells>
+                                <m:Text text="2020" />
+                                <m:Text width="3rem" />
+                                <m:Text text="S" width="3rem" />
+                                <m:Text text="0.0000" width="6rem"  />
+                                <m:Input value="2.32" width="6rem"/>
+                                <m:Input value="1" width="1rem"/>
+                                <m:Input value="3000" width="5rem"/>
+                                 <m:Text text=" " width="3rem" />
+                            </m:cells>
+                        </m:ColumnListItem>
+                    </m:items>
+                </m:Table>
+
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+<footer>
+        <m:OverflowToolbar>
+            <m:ToolbarSpacer />
+            <m:Button type="Emphasized" text="Create New Material" press="onSave" icon="sap-icon://create"/>
+            <m:Button text="Cancel" press="onCancel" />
+        </m:OverflowToolbar>
+    </footer>
+    </ObjectPageLayout>
+
+  
 </mvc:View>
