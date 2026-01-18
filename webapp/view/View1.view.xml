@@ -10,7 +10,7 @@
     
     
 
-    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showFooter="true">
 
         <headerTitle>
             <ObjectPageDynamicHeaderTitle>
@@ -251,7 +251,13 @@
                 </subSections>
             </ObjectPageSection>
         </sections>
-
+<footer>
+        <m:OverflowToolbar>
+            <m:ToolbarSpacer />
+            <m:Button type="Emphasized" text="Create New Material" press="onSave" icon="sap-icon://create"/>
+            <m:Button text="Cancel" press="onCancel" />
+        </m:OverflowToolbar>
+    </footer>
     </ObjectPageLayout>
 
   
