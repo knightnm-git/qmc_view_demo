@@ -1,0 +1,13 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="cos.qmc.views.qmcviewdemo.controller.ObjectPage">
+    <Page title="List Report Demo" showNavButton="true" navButtonPress="onNavBack">
+        <headerContent>
+            <Button icon="sap-icon://home" press="onNavBack" />
+        </headerContent>
+        <content>
+            <Table>
+                <columns><Column><Text text="Demo Item"/></Column></columns>
+                <items><ColumnListItem><cells><Text text="Sample Data 2"/></cells></ColumnListItem></items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

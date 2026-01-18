@@ -1,0 +1,13 @@
+<mvc:View controllerName="cos.qmc.views.qmcviewdemo.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+ 
+    <Page title="Floorplan Selector">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Button text="View List Report" press="onGoToList" type="Emphasized" class="sapUiTinyMarginBottom"/>
+                <Button text="View Object Page" press="onGoToObject"/>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

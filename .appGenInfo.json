@@ -1,0 +1,23 @@
+{
+  "generationParameters": {
+    "generationDate": "Sun Jan 18 2026 02:29:12 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "None",
+    "metadataFilename": "",
+    "serviceUrl": "N/A",
+    "appName": "qmc_view_demo",
+    "appTitle": "QMC View Demo",
+    "appDescription": "QMC View Demo",
+    "appNamespace": "cos.qmc.views",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.143.2",
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.20.1",
+    "template": "Basic",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}
