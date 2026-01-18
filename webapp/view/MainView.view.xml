@@ -2,11 +2,11 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
  
-    <Page title="Floorplan Selector">
+    <Page title="View Selector">
         <content>
             <VBox class="sapUiSmallMargin">
-                <Button text="View List Report" press="onGoToList" type="Emphasized" class="sapUiTinyMarginBottom"/>
-                <Button text="View Object Page" press="onGoToObject"/>
+                <Button text="View 1" press="onGoToList" type="Emphasized" class="sapUiTinyMarginBottom"/>
+                <Button text="View 2" press="onGoToObject"/>
             </VBox>
         </content>
     </Page>

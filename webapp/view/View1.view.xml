@@ -1,11 +1,11 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="cos.qmc.views.qmcviewdemo.controller.ListReport">
-    <Page title="List Report Demo" showNavButton="true" navButtonPress="onNavBack">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="cos.qmc.views.qmcviewdemo.controller.View1">
+    <Page title="View 1" showNavButton="true" navButtonPress="onNavBack">
         <headerContent>
             <Button icon="sap-icon://home" press="onNavBack" />
         </headerContent>
         <content>
             <Table>
-                <columns><Column><Text text="Demo Item"/></Column></columns>
+                <columns><Column><Text text="Demo Item 1"/></Column></columns>
                 <items><ColumnListItem><cells><Text text="Sample Data 1"/></cells></ColumnListItem></items>
             </Table>
         </content>

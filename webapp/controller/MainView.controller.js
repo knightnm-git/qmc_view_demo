@@ -6,10 +6,10 @@ sap.ui.define([
     return Controller.extend("cos.qmc.views.qmcviewdemo.controller.MainView", {
         onGoToList: function () {
             debugger;
-            this.getOwnerComponent().getRouter().navTo("RouteList");
+            this.getOwnerComponent().getRouter().navTo("RouteView1");
         },
         onGoToObject: function () {
-            this.getOwnerComponent().getRouter().navTo("RouteObject");
+            this.getOwnerComponent().getRouter().navTo("RouteView2");
         }
     });
 });

@@ -80,16 +80,16 @@
             "TargetMainView"
           ]
         },
-        { "name": "RouteList", "pattern": "list", "target": ["TargetList"] },
-    { "name": "RouteObject", "pattern": "object", "target": ["TargetObject"] }
+        { "name": "RouteView1", "pattern": "view1", "target": ["TargetView1"] },
+    { "name": "RouteView2", "pattern": "view2", "target": ["TargetView2"] }
       ],
       "targets": {
         "TargetMainView": {
           "id": "MainView",
           "name": "MainView"
         },
-        "TargetList": { "viewName": "ListReport", "viewId": "ListReport" },
-    "TargetObject": { "viewName": "ObjectPage", "viewId": "ObjectPage" }
+        "TargetView1": { "viewName": "View1", "viewId": "View1" },
+    "TargetView2": { "viewName": "View2", "viewId": "View2" }
       }
     },
     "rootView": {
