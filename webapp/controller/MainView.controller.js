@@ -12,6 +12,10 @@ sap.ui.define([
         },
         onGoToObject: function () {
             this.getOwnerComponent().getRouter().navTo("RouteView2");
-        }
+        },
+        onGoToView3: function () {
+            this.getOwnerComponent().getRouter().navTo("RouteView3");
+        },
+
     });
 });

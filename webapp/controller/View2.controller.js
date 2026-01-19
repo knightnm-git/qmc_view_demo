@@ -1,65 +1,42 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
-], function (Controller, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    'sap/ui/core/Fragment'
+], function (Controller, JSONModel, Fragment) {
     "use strict";
-    return Controller.extend("cos.qmc.views.qmcviewdemo.controller.View2", { 
+    return Controller.extend("cos.qmc.views.qmcviewdemo.controller.View2", {
+
         onInit: function () {
-            var oData = {
-                demoItems: [
-                    {
-                        PlantID: "2020",
-                        MrpType: "PD",
-                        LotSize: "EX",
-                        StExtProc: "2021",
-                        StorageBin: "",
-                        isCritical: false,
-                        PdtValue: "10"
-                    },
-                    {
-                        PlantID: "3010",
-                        MrpType: "PD",
-                        LotSize: "E1",
-                        StExtProc: "301C",
-                        StorageBin: "",
-                        isCritical: true,
-                        PdtValue: "105"
-                    },
-                                       {
-                        PlantID: "3020",
-                        MrpType: "PD",
-                        LotSize: "EX",
-                        StExtProc: "302C",
-                        StorageBin: "",
-                        isCritical: false,
-                        PdtValue: "15"
-                    },
-                                       {
-                        PlantID: "3030",
-                        MrpType: "ND",
-                        LotSize: "EX",
-                        StExtProc: "303A",
-                        StorageBin: "",
-                        isCritical: true,
-                        PdtValue: "75"
-                    }
-                   ,
-                                      {
-                        PlantID: "3040",
-                        MrpType: "PD",
-                        LotSize: "EX",
-                        StExtProc: "301C",
-                        StorageBin: "",
-                        isCritical: false,
-                        PdtValue: "15"
-                    } 
-                ]
-            };
-            var oModel = new JSONModel(oData);
-            this.getView().setModel(oModel, "demo");
+
         },
         onNavBack: function () {
             this.getOwnerComponent().getRouter().navTo("RouteMainView");
+        },
+        onPress: function (oEvent) {
+            debugger;
+            var oView = this.getView(),
+                oButton = oEvent.getSource(); // Better: get the button directly from the click event
+
+            // If the fragment doesn't exist yet, load it
+            if (!this._pMenu) {
+                this._pMenu = Fragment.load({
+                    id: oView.getId(),
+                    name: "cos.qmc.views.qmcviewdemo.view.fragments.Menu",
+                    controller: this
+                }).then(function (oMenu) {
+                    oView.addDependent(oMenu); // Ensure models are available to the fragment
+                    return oMenu;
+                });
+            }
+
+            // Handle the Promise
+            this._pMenu.then(function (oMenu) {
+                if (oMenu.isOpen()) {
+                    oMenu.close();
+                } else {
+                    oMenu.openBy(oButton);
+                }
+            });
         }
     });
 });

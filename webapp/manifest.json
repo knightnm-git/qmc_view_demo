@@ -40,7 +40,8 @@
         "sap.m": {},
         "sap.ui.core": {},
         "sap.uxap": {},
-        "sap.ui.table": {}
+        "sap.ui.table": {},
+        "sap.ui.comp": {}
       }
     },
     "contentDensities": {
@@ -83,7 +84,8 @@
           ]
         },
         { "name": "RouteView1", "pattern": "view1", "target": ["TargetView1"] },
-    { "name": "RouteView2", "pattern": "view2", "target": ["TargetView2"] }
+    { "name": "RouteView2", "pattern": "view2", "target": ["TargetView2"] },
+    { "name": "RouteView3", "pattern": "view3", "target": ["TargetView3"] }
       ],
       "targets": {
         "TargetMainView": {
@@ -91,7 +93,8 @@
           "name": "MainView"
         },
         "TargetView1": { "viewName": "View1", "viewId": "View1" },
-    "TargetView2": { "viewName": "View2", "viewId": "View2" }
+    "TargetView2": { "viewName": "View2", "viewId": "View2" },
+    "TargetView3": { "viewName": "View3", "viewId": "View3" }
       }
     },
     "rootView": {

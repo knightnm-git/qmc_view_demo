@@ -7,6 +7,7 @@
             <VBox class="sapUiSmallMargin">
                 <Button text="View 1" press="onGoToList" type="Emphasized" class="sapUiTinyMarginBottom"/>
                 <Button text="View 2" press="onGoToObject"/>
+                <Button text="View 3" press="onGoToView3"/>
             </VBox>
         </content>
     </Page>

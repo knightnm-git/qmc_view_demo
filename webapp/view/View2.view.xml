@@ -19,7 +19,7 @@
             <ObjectPageDynamicHeaderTitle>
                 <expandedHeading>
                     <m:Title
-                        text="Cosol - Quick Material Create"
+                        text="Cosol - Quick Material Create - View 2"
                         wrapping="true"
                     />
                 </expandedHeading>
@@ -44,6 +44,9 @@
                         type="Emphasized"
                         press="onRefresh"
                     />
+                    
+		            <m:Button id="button" text="Settings Menu" press="onPress" ariaHasPopup="Menu" visible="false"/>
+	
                 </actions>
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
@@ -62,8 +65,8 @@
                         width="150px"
                     />
                     <m:Select
-                        id="country"
-                        selectedKey="{Country}"
+                        id="product2"
+                        selectedKey="{Product}"
                         width="240px"
                     >
                         <m:items>
@@ -98,7 +101,7 @@
         </headerContent>
 
         <sections>
-            <ObjectPageSection title="Header/Client Data">
+            <ObjectPageSection title="Header/Client Data (normal Form 3 columns)">
                 <subSections>
                     <ObjectPageSubSection>
                         <l:Grid
@@ -133,7 +136,7 @@
                                                 textAlign="Begin"
                                             />
                                             <m:Input
-                                                value="Demo Material"
+                                                value=""
                                                 placeholder="provide a description...."
                                                 width="240px"
                                             />
@@ -148,7 +151,7 @@
                                                 textAlign="Begin"
                                             />
                                             <m:Text
-                                                text="ROH"
+                                                text="{demo>/demoClient/MatType}"
                                                 width="100%"
                                             />
                                         </m:HBox>
@@ -162,7 +165,7 @@
                                                 textAlign="Begin"
                                             />
                                             <m:Input
-                                                value="L002"
+                                                value="{demo>/demoClient/MatGrp}"
                                                 width="80px"
                                             />
                                         </m:HBox>
@@ -176,7 +179,7 @@
                                                 textAlign="Begin"
                                             />
                                             <m:Input
-                                                value="PC"
+                                                value="{demo>/demoClient/BaseUnit}"
                                                 width="50px"
                                             />
                                         </m:HBox>
@@ -195,7 +198,7 @@
                                                 textAlign="Begin"
                                             />
                                             <m:Input
-                                                value="0.500"
+                                                value="{demo>/demoClient/GrossWeight}"
                                                 width="100px"
                                             />
                                         </m:HBox>
@@ -209,7 +212,7 @@
                                                 textAlign="Begin"
                                             />
                                             <m:Input
-                                                value="0.400"
+                                                value="{demo>/demoClient/NetWeight}"
                                                 width="100px"
                                             />
                                         </m:HBox>
@@ -223,7 +226,7 @@
                                                 textAlign="Begin"
                                             />
                                             <m:Input
-                                                value="KG"
+                                                value="{demo>/demoClient/WightUnit}"
                                                 width="50px"
                                             />
                                         </m:HBox>
@@ -237,7 +240,7 @@
                                                 textAlign="Begin"
                                             />
                                             <m:Input
-                                                value="SAP"
+                                                value="{demo>/demoClient/Manuf}"
                                                 width="90px"
                                             />
                                         </m:HBox>
@@ -251,7 +254,7 @@
                                                 textAlign="Begin"
                                             />
                                             <m:Input
-                                                value="PART-123"
+                                                value="{demo>/demoClient/MfrPartNumb}"
                                                 width="110px"
                                             />
                                         </m:HBox>
@@ -338,13 +341,13 @@
                 </subSections>
             </ObjectPageSection>
 
-            <ObjectPageSection title="Plant Data">
+            <ObjectPageSection title="Plant Data (Grid Table)">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
                             <t:Table
                                 id="itemsTable2.1"
-                                rows="{demo>/demoItems}"
+                                rows="{demo>/demoPlants}"
                                 columnHeaderHeight="30"
                                 selectionMode="None"
                                 alternateRowColors="true"
@@ -417,13 +420,14 @@
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
-            <ObjectPageSection title="Valuation Data">
+            <ObjectPageSection title="Valuation Data (Responsive Table)">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
                             <m:Table
                                 id="itemsTable2.2"
                                 sticky="HeaderToolbar,ColumnHeaders"
+                                items="{demo>/demoVal}"
                             >
                                 <m:columns>
                                     <m:Column>
@@ -464,67 +468,28 @@
                                 <m:items>
                                     <m:ColumnListItem>
                                         <m:cells>
-                                            <m:Text text="3010" />
-                                            <m:Text width="3rem" />
-                                            <m:Text
-                                                text="S"
+                                            <m:Text text="{demo>ValArea}" />
+                                            <m:Text text="{demo>ValType}" />
+                                            <m:Text text="{demo>PrTyp}" />
+                                            <m:Text text="{demo>MvAvgPrice}" />
+                                            <m:Input
+                                                value="{demo>StdPrice}"
+                                                width="6rem"
+                                            />
+                                            <m:Input
+                                                value="{demo>PrUnit}"
                                                 width="3rem"
                                             />
-                                            <m:Text
-                                                text="0.0000"
-                                                width="6rem"
-                                            />
                                             <m:Input
-                                                value="2.32"
-                                                width="6rem"
-                                            />
-                                            <m:Input
-                                                value="1"
-                                                width="1rem"
-                                            />
-                                            <m:Input
-                                                value="3000"
+                                                value="{demo>ValClass}"
                                                 width="5rem"
                                             />
-                                            <m:Text
-                                                text=" "
-                                                width="3rem"
-                                            />
-                                        </m:cells>
-                                    </m:ColumnListItem>
-
-                                    <m:ColumnListItem>
-                                        <m:cells>
-                                            <m:Text text="2020" />
-                                            <m:Text width="3rem" />
-                                            <m:Text
-                                                text="S"
-                                                width="3rem"
-                                            />
-                                            <m:Text
-                                                text="0.0000"
-                                                width="6rem"
-                                            />
-                                            <m:Input
-                                                value="2.32"
-                                                width="6rem"
-                                            />
-                                            <m:Input
-                                                value="1"
-                                                width="1rem"
-                                            />
-                                            <m:Input
-                                                value="3000"
-                                                width="5rem"
-                                            />
-                                            <m:Text
-                                                text=" "
-                                                width="3rem"
-                                            />
+                                            <m:Text text="{demo>ValCat}" />
                                         </m:cells>
                                     </m:ColumnListItem>
                                 </m:items>
                             </m:Table>
+
                         </blocks>
                     </ObjectPageSubSection>
                 </subSections>

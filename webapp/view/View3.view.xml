@@ -1,0 +1,323 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    height="100%"
+    controllerName="cos.qmc.views.qmcviewdemo.controller.View2"
+>
+    <ObjectPageLayout
+        id="ObjectPageLayout3"
+        showTitleInHeaderContent="true"
+        upperCaseAnchorBar="false"
+        showFooter="true"
+    >
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title
+                        text="Cosol - Quick Material Create - View 3"
+                        wrapping="true"
+                    />
+                </expandedHeading>
+                <snappedHeading>
+                    <m:Title
+                        text="Cosol - Quick Material Create"
+                        wrapping="true"
+                    />
+                </snappedHeading>
+                <navigationActions>
+                    <m:Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press="onNavBack"
+                        tooltip="Back"
+                    />
+                </navigationActions>
+                <actions>
+                    <m:Button
+                        text="Refresh/Select Data"
+                        icon="sap-icon://refresh"
+                        type="Emphasized"
+                        press="onRefresh"
+                    />
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+            <m:VBox
+                width="450px"
+                class="sapUiNoContentPadding"
+            >
+                <m:HBox
+                    alignItems="Center"
+                    class="sapUiTinyMarginBottom"
+                >
+                    <m:Label
+                        text="Template Material"
+                        width="150px"
+                    />
+                    <m:Select
+                        id="product3"
+                        selectedKey="{Product}"
+                        width="240px"
+                    >
+                        <m:items>
+                            <core:Item
+                                key="ID001"
+                                text="Product Alpha (ID001)"
+                            />
+                            <core:Item
+                                key="ID002"
+                                text="Product Beta (ID002)"
+                            />
+                            <core:Item
+                                key="ID003"
+                                text="Product Gamma (ID003)"
+                            />
+                        </m:items>
+                    </m:Select>
+                </m:HBox>
+
+                <m:HBox alignItems="Center">
+                    <m:Label
+                        text="Test Run"
+                        width="150px"
+                    />
+                    <m:Switch
+                        state="true"
+                        customTextOn="Yes"
+                        customTextOff="No"
+                    />
+                </m:HBox>
+            </m:VBox>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection title="Header/Client Data (simple Form 2 columns)">
+                <subSections>
+                    <ObjectPageSubSection>
+                    <m:VBox class="sapUiSmallMargin">
+                        <f:SimpleForm
+                            id="materialForm"
+                            editable="true"
+ 		                	layout="ColumnLayout"
+                			columnsM="1"
+			                columnsL="2"
+			                columnsXL="2"
+                            labelSpanL="4" 
+                            labelSpanM="4"
+                            binding="{demo>/demoClient}">
+                            <f:content>
+                               
+                                <m:Label text="Material" textAlign="Begin" />
+                                <m:Text text="generated on save" />
+
+                                <m:Label text="Description" textAlign="Begin" />
+                                <m:Input value="{demo>Description}" width="6cm" />
+
+                                <m:Label text="Material Type" textAlign="Begin" />
+                                <m:Text text="{demo>MatType}" />
+
+                                <m:Label text="Material Group" textAlign="Begin" />
+                                <m:Input value="{demo>MatGrp}" width="3cm" />
+                                
+                                <m:Label text="Base Unit" textAlign="Begin" />
+                                <m:Input value="{demo>BaseUnit}" width="3cm" />
+                                
+                                <m:Label text="Gross Weight" textAlign="Begin" />
+                                <m:Input value="{demo>GrossWeight}" width="3cm" />
+
+                                <m:Label text="Net Weight" textAlign="Begin" />
+                                <m:Input value="{demo>NetWeight}" width="3cm" />
+
+                                <m:Label text="Unit of Weight" textAlign="Begin" />
+                                <m:Input value="{demo>WeightUnit}" width="3cm" />
+
+                                <m:Label text="Manufacturer" textAlign="Begin" />
+                                <m:Input value="{demo>Manuf}" width="3cm" />
+
+                                <m:Label text="Mfr Part Number" textAlign="Begin" />
+                                <m:Input value="{demo>MfrPartNumb}" width="3cm" />
+                            </f:content>
+                        </f:SimpleForm>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection title="Plant Data (Grid Table)">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <t:Table
+                                id="itemsTable3.1"
+                                rows="{demo>/demoPlants}"
+                                columnHeaderHeight="30"
+                                selectionMode="None"
+                                alternateRowColors="true"
+                                enableSelectAll="false"
+                            >
+                                <t:columns>
+                                    <t:Column width="8rem">
+                                        <m:Label text="Create for Plant" />
+                                        <t:template>
+                                            <m:CheckBox selected="true" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="6rem">
+                                        <m:Label text="Plant" />
+                                        <t:template>
+                                            <m:Text text="{demo>PlantID}" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="6rem">
+                                        <m:Label text="MRP Type" />
+                                        <t:template>
+                                            <m:Input value="{demo>MrpType}" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="6rem">
+                                        <m:Label text="Lot Sizing" />
+                                        <t:template>
+                                            <m:Input value="{demo>LotSize}" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="7rem">
+                                        <m:Label text="ST ExtProc" />
+                                        <t:template>
+                                            <m:Input value="{demo>StExtProc}" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="10rem">
+                                        <m:Label text="Storage Bin" />
+                                        <t:template>
+                                            <m:Input
+                                                value="{demo>StorageBin}"
+                                                placeholder="Enter Bin..."
+                                            />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="5rem">
+                                        <m:Label text="Critical" />
+                                        <t:template>
+                                            <m:CheckBox
+                                                selected="{demo>isCritical}"
+                                            />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="5rem">
+                                        <m:Label text="PDT" />
+                                        <t:template>
+                                            <m:Text text="{demo>PdtValue}" />
+                                        </t:template>
+                                    </t:Column>
+                                </t:columns>
+                            </t:Table>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <ObjectPageSection title="Valuation Data (Responsive Table)">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <m:Table
+                                id="itemsTable3.2"
+                                sticky="HeaderToolbar,ColumnHeaders"
+                                items="{demo>/demoVal}"
+                            >
+                                <m:columns>
+                                    <m:Column>
+                                        <m:Text text="ValA" />
+                                    </m:Column>
+                                    <m:Column>
+                                        <m:Text text="Val. Type" />
+                                    </m:Column>
+                                    <m:Column>
+                                        <m:Text text="Pr." />
+                                    </m:Column>
+                                    <m:Column>
+                                        <m:Text text="MvAvgPrice" />
+                                    </m:Column>
+                                    <m:Column>
+                                        <m:Text text="Std Price" />
+                                    </m:Column>
+                                    <m:Column
+                                        minScreenWidth="Tablet"
+                                        demandPopin="true"
+                                    >
+                                        <m:Text text="Pr Unit" />
+                                    </m:Column>
+                                    <m:Column
+                                        minScreenWidth="Tablet"
+                                        demandPopin="true"
+                                    >
+                                        <m:Text text="ValCl" />
+                                    </m:Column>
+                                    <m:Column
+                                        minScreenWidth="Tablet"
+                                        demandPopin="true"
+                                    >
+                                        <m:Text text="ValCat" />
+                                    </m:Column>
+                                </m:columns>
+
+                                <m:items>
+                                    <m:ColumnListItem>
+                                        <m:cells>
+                                            <m:Text text="{demo>ValArea}" />
+                                            <m:Text text="{demo>ValType}" />
+                                            <m:Text text="{demo>PrTyp}" />
+                                            <m:Text text="{demo>MvAvgPrice}" />
+                                            <m:Input
+                                                value="{demo>StdPrice}"
+                                                width="6rem"
+                                            />
+                                            <m:Input
+                                                value="{demo>PrUnit}"
+                                                width="3rem"
+                                            />
+                                            <m:Input
+                                                value="{demo>ValClass}"
+                                                width="5rem"
+                                            />
+                                            <m:Text text="{demo>ValCat}" />
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+        <footer>
+            <m:OverflowToolbar>
+                <m:ToolbarSpacer />
+                <m:Button
+                    type="Emphasized"
+                    text="Create New Material"
+                    press="onSave"
+                    icon="sap-icon://create"
+                />
+                <m:Button
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </m:OverflowToolbar>
+        </footer>
+    </ObjectPageLayout>
+</mvc:View>
