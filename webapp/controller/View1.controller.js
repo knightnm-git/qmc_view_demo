@@ -27,13 +27,13 @@ sap.ui.define([
                         "$expand": "to_Plants,to_Valuation"
                     },
                     success: function (oData) {
-                        debugger;
+                       
                         this.getView().setModel(new sap.ui.model.json.JSONModel(oData), "headerDetail");
-                        debugger;
+                        
                     }.bind(this),
 
                     error: function (oError) {
-                        debugger;
+                       
                         console.error("Read failed details:", oError);
                     }.bind(this)
                 });

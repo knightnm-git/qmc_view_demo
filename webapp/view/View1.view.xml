@@ -76,27 +76,27 @@
                     </m:HBox>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Material Type" width="140px" textAlign="Begin" />
-                        <m:Text text="ROH" width="100%" />
+                        <m:Text text="{headerDetail>/MatType}" width="100%" />
                     </m:HBox>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Material Group" width="140px" textAlign="Begin" />
-                        <m:Input value="L002" width="80px" />
+                        <m:Input value="{headerDetail>/MatGroup}" width="80px" />
                     </m:HBox>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Base Unit" width="140px" textAlign="Begin" />
-                        <m:Input value="PC" width="50px" />
+                        <m:Label text="PC" width="140px" textAlign="Begin" />
+                        <m:Input value="{headerDetail>/BaseUnit}" width="50px" />
                     </m:HBox>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Gross Weight" width="140px" textAlign="Begin" />
-                        <m:Input value="0.500" width="100px" />
+                        <m:Input value="{headerDetail>/GrossWeight}" width="100px" />
                     </m:HBox>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Net Weight" width="140px" textAlign="Begin" />
-                        <m:Input value="0.400" width="100px" />
+                        <m:Input value="{headerDetail>/NetWeight}" width="100px" />
                     </m:HBox>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Unit of Weight" width="140px" textAlign="Begin" />
-                        <m:Input value="KG" width="50px" />
+                        <m:Label text="Weight Unit" width="140px" textAlign="Begin" />
+                        <m:Input value="{headerDetail>/WeightUnit}" width="50px" />
                     </m:HBox>
                 </m:items>
             </m:VBox>
@@ -107,11 +107,11 @@
                     
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Manufacturer" width="140px" textAlign="Begin" />
-                        <m:Input value="{/field9}" width="90px" />
+                        <m:Input value="{headerDetail>/Manufacturer}" width="90px" />
                     </m:HBox>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Mfr Part Number" width="140px" textAlign="Begin" />
-                        <m:Input value="{/field10}" width="110px" />
+                        <m:Input value="{headerDetail>/ManufPartNo}" width="110px" />
                     </m:HBox>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Label 11" width="140px" textAlign="Begin" />
@@ -152,44 +152,31 @@
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
-                            <m:Table id="itemsTable1.1">
+                            <m:Table id="itemsTable1.1" items="{headerDetail>/to_Plants/results}">
                                 <m:columns>
                                     <m:Column><m:Text text="Create for Plant" /></m:Column>
                                     <m:Column><m:Text text="Plant" /></m:Column>
                                     <m:Column><m:Text text="MRP Type" /></m:Column>
                                     <m:Column><m:Text text="Lot Sizing" /></m:Column>
+                                    <m:Column><m:Text text="MRP Ctrlr" /></m:Column>
                                     <m:Column><m:Text text="ST ExtProc" /></m:Column>
-                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="Storage Bin" /></m:Column>
-                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="Critical" /></m:Column>
-                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="PDT" /></m:Column>
+                                    <m:Column><m:Text text="Storage Bin" /></m:Column>
+
                                 </m:columns>
                             <m:items>
                         <m:ColumnListItem>
                             <m:cells>
-                                <m:CheckBox selected="true" />
-                                <m:Text text="2020" />
-                                <m:Input value="PD" width="3rem" />
-                                <m:Input value="EX" width="3rem" />
-                                <m:Input value="2021" width="4rem" />
-                                <m:Input  width="6rem" placeholder="Enter Bin..."/>
-                                <m:CheckBox selected="false" />
-                                <m:Text text="10" width="3rem" />
+                                <m:CheckBox id="CreateForPlant" selected="true" />
+                                <m:Text text="{headerDetail>Plant}" />
+                                <m:Text text="{headerDetail>MRPType}" />
+                                <m:Input value="{headerDetail>LotSize}" width="3rem" />
+                                <m:Input value="{headerDetail>MRPCtrl}" width="4rem" />
+                                <m:Input  value="{headerDetail>StrLocExtProc}"/>
+                                <m:Input  value="" placeholder="Enter Bin..."/>
                             </m:cells>
                         </m:ColumnListItem>
 
-                        <m:ColumnListItem>
-                            <m:cells>
-                                <m:CheckBox selected="true" />
-                                <m:Text text="3010" />
-                                <m:Input value="PD" width="3rem" />
-                                <m:Input value="EX" width="3rem" />
-                                <m:Input value="301C" width="4rem" />
-                                <m:Input   width="6rem" placeholder="Enter Bin..."/>
-                                <m:CheckBox selected="false" />
-                                <m:Text text="10" width="3rem" />
-                                 
-                            </m:cells>
-                        </m:ColumnListItem>
+                     
 
                     </m:items>
                             </m:Table>
@@ -202,13 +189,15 @@
                     <ObjectPageSubSection>
                         <blocks>
 
-                            <m:Table id="itemsTable1.2" sticky="HeaderToolbar,ColumnHeaders">
+                            <m:Table items="{headerDetail>/to_Valuation/results}" id="itemsTable1.2" sticky="HeaderToolbar,ColumnHeaders">
                                 <m:columns>
                                     <m:Column><m:Text text="ValA" /></m:Column>
                                     <m:Column><m:Text text="Val. Type" /></m:Column>
                                     <m:Column><m:Text text="Pr." /></m:Column>
                                     <m:Column><m:Text text="MvAvgPrice" /></m:Column>
                                     <m:Column><m:Text text="Std Price" /></m:Column>
+                                    <m:Column><m:Text text="Currency" /></m:Column>
+
                                     <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="Pr Unit" /></m:Column>
                                     <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="ValCl" /></m:Column>
                                     <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="ValCat" /></m:Column>
@@ -218,29 +207,19 @@
                         <m:ColumnListItem>
                             <m:cells>
                                  
-                                <m:Text text="3010" />
-                                <m:Text width="3rem" />
-                                <m:Text text="S" width="3rem" />
-                                <m:Text text="0.0000" width="6rem"  />
-                                <m:Input value="2.32" width="6rem"/>
-                                <m:Input value="1" width="1rem"/>
-                                <m:Input value="3000" width="5rem"/>
-                                <m:Text text=" " width="3rem" />
+                                <m:Text text="{headerDetail>ValArea}" />
+                                <m:Text text="{headerDetail>ValType}" width="10rem" />
+                                <m:Text text="{headerDetail>Prc_Control}" width="3rem" />
+                                <m:Input value="{headerDetail>MovAvgPrice}" width="6rem"  />
+                                <m:Input value="{headerDetail>StdPrice}" width="6rem"/>
+                                <m:Text text="{headerDetail>Currency}" width="3rem" />
+                                <m:Input value="{headerDetail>PriceUnit}" width="1rem"/>
+                                <m:Input value="{headerDetail>ValClass}" width="5rem"/>
+                                <m:Text text="{headerDetail>ValCat}" width="3rem" />
+                                
                             </m:cells>
                         </m:ColumnListItem>
-                    
-                        <m:ColumnListItem>
-                            <m:cells>
-                                <m:Text text="2020" />
-                                <m:Text width="3rem" />
-                                <m:Text text="S" width="3rem" />
-                                <m:Text text="0.0000" width="6rem"  />
-                                <m:Input value="2.32" width="6rem"/>
-                                <m:Input value="1" width="1rem"/>
-                                <m:Input value="3000" width="5rem"/>
-                                 <m:Text text=" " width="3rem" />
-                            </m:cells>
-                        </m:ColumnListItem>
+                                           
                     </m:items>
                 </m:Table>
 
