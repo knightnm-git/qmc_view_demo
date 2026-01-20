@@ -14,6 +14,17 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.20.1",
       "toolsId": "8759f08f-7e02-4c92-bef6-28dccbbb3911"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/COS/CMDS_QMC_SRV",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
     }
   },
   "sap.ui": {
@@ -54,6 +65,18 @@
         "settings": {
           "bundleName": "cos.qmc.views.qmcviewdemo.i18n.i18n"
         }
+      },
+      "tmpMaterial": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
       }
     },
     "resources": {
@@ -83,18 +106,45 @@
             "TargetMainView"
           ]
         },
-        { "name": "RouteView1", "pattern": "view1", "target": ["TargetView1"] },
-    { "name": "RouteView2", "pattern": "view2", "target": ["TargetView2"] },
-    { "name": "RouteView3", "pattern": "view3", "target": ["TargetView3"] }
+        {
+          "name": "RouteView1",
+          "pattern": "view1",
+          "target": [
+            "TargetView1"
+          ]
+        },
+        {
+          "name": "RouteView2",
+          "pattern": "view2",
+          "target": [
+            "TargetView2"
+          ]
+        },
+        {
+          "name": "RouteView3",
+          "pattern": "view3",
+          "target": [
+            "TargetView3"
+          ]
+        }
       ],
       "targets": {
         "TargetMainView": {
           "id": "MainView",
           "name": "MainView"
         },
-        "TargetView1": { "viewName": "View1", "viewId": "View1" },
-    "TargetView2": { "viewName": "View2", "viewId": "View2" },
-    "TargetView3": { "viewName": "View3", "viewId": "View3" }
+        "TargetView1": {
+          "viewName": "View1",
+          "viewId": "View1"
+        },
+        "TargetView2": {
+          "viewName": "View2",
+          "viewId": "View2"
+        },
+        "TargetView3": {
+          "viewName": "View3",
+          "viewId": "View3"
+        }
       }
     },
     "rootView": {
@@ -105,3 +155,4 @@
     }
   }
 }
+

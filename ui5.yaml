@@ -16,12 +16,16 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertErrors: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertErrors: true # Changed to true; helpful for dev environments
         ui5:
           path:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
+        backend:
+          - path: /sap
+            url: https://s4d.hostedsap.com
+            destination: S4D
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
