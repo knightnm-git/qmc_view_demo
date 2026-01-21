@@ -18,84 +18,42 @@
         <headerTitle>
             <ObjectPageDynamicHeaderTitle>
                 <expandedHeading>
-                    <m:Title
-                        text="Cosol - Quick Material Create - View 3"
-                        wrapping="true"
-                    />
+                    <m:Title text="Cosol - Quick Material Create - View 3" wrapping="true"/>
                 </expandedHeading>
                 <snappedHeading>
-                    <m:Title
-                        text="Cosol - Quick Material Create"
-                        wrapping="true"
-                    />
+                    <m:Title text="Cosol - Quick Material Create - View 3" wrapping="true"/>
                 </snappedHeading>
-                <navigationActions>
-                    <m:Button
-                        icon="sap-icon://nav-back"
-                        type="Transparent"
-                        press="onNavBack"
-                        tooltip="Back"
-                    />
-                </navigationActions>
+                    <navigationActions>
+                        <m:Button icon="sap-icon://nav-back" type="Transparent" 
+                                  press="onNavBack"          tooltip="Back"/>
+                    </navigationActions>
                 <actions>
-                    <m:Button
-                        text="Refresh/Select Data"
-                        icon="sap-icon://refresh"
-                        type="Emphasized"
-                        press="onRefresh"
-                    />
+                    <m:Button text="Refresh/Select Data" icon="sap-icon://refresh" type="Emphasized" press="onRefresh" />
                 </actions>
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
 
         <headerContent>
-            <m:VBox
-                width="450px"
-                class="sapUiNoContentPadding"
-            >
-                <m:HBox
-                    alignItems="Center"
-                    class="sapUiTinyMarginBottom"
-                >
-                    <m:Label
-                        text="Template Material"
-                        width="150px"
-                    />
-                    <m:Select
-                        id="product3"
-                        selectedKey="{Product}"
-                        width="240px"
-                    >
+            <m:VBox width="450px" class="sapUiNoContentPadding">
+                <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                    <m:Label text="Template Material" width="150px" />
+                    <m:Select id="product3" width="240px">
                         <m:items>
-                            <core:Item
-                                key="ID001"
-                                text="Product Alpha (ID001)"
-                            />
-                            <core:Item
-                                key="ID002"
-                                text="Product Beta (ID002)"
-                            />
-                            <core:Item
-                                key="ID003"
-                                text="Product Gamma (ID003)"
-                            />
+                            <core:Item key="R-302" text="Product Alpha (R-302)" />
+                            <core:Item key="R-303" text="Product Beta (R-303)" />
+                            <core:Item key="T_REPAIRABLE" text="Product Repairable" />
                         </m:items>
                     </m:Select>
                 </m:HBox>
 
                 <m:HBox alignItems="Center">
-                    <m:Label
-                        text="Test Run"
-                        width="150px"
-                    />
-                    <m:Switch
-                        state="true"
-                        customTextOn="Yes"
-                        customTextOff="No"
-                    />
+                    <m:Label text="Test Run" width="150px" />
+                    <m:Switch state="true" customTextOn="Yes" customTextOff="No" />
                 </m:HBox>
             </m:VBox>
         </headerContent>
+
+        
 
         <sections>
             <ObjectPageSection title="Header/Client Data (simple Form 2 columns)">

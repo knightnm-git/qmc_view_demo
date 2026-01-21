@@ -35,14 +35,13 @@
 <headerContent>
 <m:VBox width="450px" class="sapUiNoContentPadding">
     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-        <m:Label text="Template Material" width="150px" />
-            <m:Select id="product1" width="240px">
-                <m:items>
-                    <core:Item key="R-302" text="Product Alpha (R-302)" />
-                    <core:Item key="R-303" text="Product Beta (R-303)" />
-                    <core:Item key="T_REPAIRABLE" text="Product Repairable" />
-                </m:items>
-            </m:Select>
+        <m:Label text="Material" labelFor="materialInput" />
+    <m:Input
+    id="materialInput"
+    placeholder="Select Material..."
+    showValueHelp="true"
+    valueHelpRequest=".onMaterialValueHelpRequest" />
+ 
     </m:HBox>
 
     <m:HBox alignItems="Center">

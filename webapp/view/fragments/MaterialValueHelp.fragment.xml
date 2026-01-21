@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <TableSelectDialog
+        id="materialVHDialog"
+        title="Select Material"
+        noDataText="No Materials Found"
+        search=".onMaterialValueHelpSearch"
+        confirm=".onMaterialValueHelpConfirm"
+        cancel=".onMaterialValueHelpClose"
+        items="{
+        path: 'headerDetail>/I_MaterialVH',
+        sorter: { path: 'Material', descending: false }
+    }">
+        <columns>
+            <Column><header><Text text="Material ID" /></header></Column>
+            <Column><header><Text text="Description" /></header></Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{headerDetail>Material}" />
+                    <Text text="{headerDetail>MaterialName}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </TableSelectDialog>
+</core:FragmentDefinition>
+

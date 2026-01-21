@@ -37,6 +37,34 @@ sap.ui.define([
                     oMenu.openBy(oButton);
                 }
             });
+        },
+        onRefresh: function () {
+            var oDataModel = this.getOwnerComponent().getModel("MaterialData");
+            var sSelectedMaterial = this.getView().byId("product2").getSelectedKey();
+            var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')";
+
+            // This ensures the metadata is ready before the read fires
+            oDataModel.metadataLoaded().then(function () {
+                console.log("Metadata loaded. Attempting read...");
+
+                oDataModel.read(sPath, {
+                    urlParameters: {
+                        "$expand": "to_Plants,to_Valuation"
+                    },
+                    success: function (oData) {
+
+                        this.getView().setModel(new sap.ui.model.json.JSONModel(oData), "headerDetail");
+
+                    }.bind(this),
+
+                    error: function (oError) {
+
+                        console.error("Read failed details:", oError);
+                    }.bind(this)
+                });
+            
+            });
         }
+
     });
 });
