@@ -74,10 +74,18 @@
           "defaultCountMode": "Inline",
           "refreshAfterChange": false,
           "metadataUrlParams": {
-            "sap-value-list": "none"
+            "sap-value-list": "all"
           }
         }
+      },
+      "": {
+    "dataSource": "mainService",
+    "settings": {
+      "metadataUrlParams": {
+        "sap-value-list": "all"
       }
+    }
+  }
     },
     "resources": {
       "css": [
