@@ -11,13 +11,15 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().navTo("RouteMainView");
         },
         onRefresh: function () {
-            var oDataModel = this.getOwnerComponent().getModel("tmpMaterial");
-            var sSelectedMaterial = this.getView().byId("product1").getSelectedKey();
-            var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')";
+            debugger;
+            var oDataModel = this.getOwnerComponent().getModel("headerDetail");
+           // var sSelectedMaterial = this.getView().byId("product1").getSelectedKey();
+           var sSelectedMaterial = this.getView().byId("product1").getValue(); 
+           var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')";
             //var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')?sap-client=110";
             // Diagnostic: Is the model actually there?
             if (!oDataModel) {
-                console.error("Model 'tmpMaterial' is missing!");
+                console.error("Model 'headerDetail' is missing!");
                 return;
             }
 
@@ -44,8 +46,9 @@ sap.ui.define([
                 console.error("Metadata promise failed:", oError);
             });
         },
-       
+
         onMaterialValueHelpRequest: function (oEvent) {
+            debugger;
             var oView = this.getView();
             if (!this._pValueHelpDialog) {
                 Fragment.load({
@@ -73,14 +76,44 @@ sap.ui.define([
                 sap.m.MessageToast.show("Binding still initializing, please wait...");
             }
         },
+        onMaterialValueHelpSearchtmp: function (oEvent) {
+            debugger;
+            var sValue = oEvent.getParameter("value");
+            var oDialog = oEvent.getSource();
+
+            // 1. Efficiency Check: Only search if user types 3+ characters
+            if (!sValue || sValue.length < 3) {
+                sap.m.MessageToast.show("Please enter at least 3 characters to search.");
+                return;
+            }
+
+            // 2. Bind Items Dynamically
+            // This triggers the OData request ONLY when this code runs
+            oDialog.bindItems({
+                path: 'headerDetail>/I_MaterialVH',
+                template: new sap.m.ColumnListItem({
+                    cells: [
+                        new sap.m.Text({ text: "{headerDetail>Material}" }),
+                        // Bind using the association path
+                        //new sap.m.Text({ text: "{headerDetail>_Text/MaterialName}" }) 
+                    ]
+                }),
+                filters: [
+                    new sap.ui.model.Filter("Material", sap.ui.model.FilterOperator.Contains, sValue)
+                ]
+            });
+        },
 
         onMaterialValueHelpConfirm: function (oEvent) {
+            debugger;
             var oSelectedItem = oEvent.getParameter("selectedItem");
             if (oSelectedItem) {
                 var sMaterial = oSelectedItem.getCells()[0].getText();
                 this.byId("materialInput").setValue(sMaterial);
             }
-        }
+                oEvent.getSource().unbindItems();
+        },
+
 
     });
 });

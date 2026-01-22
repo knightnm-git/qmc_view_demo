@@ -37,7 +37,7 @@
     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
         <m:Label text="Material" labelFor="materialInput" />
     <m:Input
-    id="materialInput"
+    id="product1"
     placeholder="Select Material..."
     showValueHelp="true"
     valueHelpRequest=".onMaterialValueHelpRequest" />
