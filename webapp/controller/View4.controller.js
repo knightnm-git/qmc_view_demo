@@ -2,7 +2,7 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller"
 ], function (Controller) {
     "use strict";
-    return Controller.extend("cos.qmc.views.qmcviewdemo.controller.View3", {
+    return Controller.extend("cos.qmc.views.qmcviewdemo.controller.View4", {
         onNavBack: function () {
 
             this.getOwnerComponent().getRouter().navTo("RouteMainView");
@@ -13,11 +13,11 @@ sap.ui.define([
         },
 
         onSearch: function (oEvent) {
-           
+            debugger;
             // 1. Get references to the controls
-            var oSmartFilterBar = this.byId("smartFilterBar");
-            var oSmartForm = this.byId("smartForm");
-            var oIconTabBar = this.byId("idIconTabBar");
+            var oSmartFilterBar = this.byId("smartFilterBar4");
+            var oSmartForm = this.byId("smartForm4");
+            var oIconTabBar = this.byId("idIconTabBar4");
 
             // 2. Get the selected Material ID
             // getFilterData() returns an object like { Material: "MAT-100" }

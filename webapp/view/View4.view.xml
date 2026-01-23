@@ -1,5 +1,5 @@
 <mvc:View 
-    controllerName="cos.qmc.views.qmcviewdemo.controller.View3"
+    controllerName="cos.qmc.views.qmcviewdemo.controller.View4"
     xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:smartForm="sap.ui.comp.smartform"
@@ -9,10 +9,10 @@
     xmlns:m="sap.m"
     height="100%">
 
-    <m:Page id="page" title="Cosol - Quick Material Create - View 3" 
+    <m:Page id="page2" title="Cosol - Quick Material Create - View 4" 
             showNavButton="true" navButtonPress="onNavBack">
         <smartFilterBar:SmartFilterBar 
-                id="smartFilterBar" 
+                id="smartFilterBar4" 
                 entitySet="xCOSxqmc_i_MatHdr" 
                 
                 search="onSearch" showFilterConfiguration="false">
@@ -29,12 +29,12 @@
             </smartFilterBar:controlConfiguration>
         </smartFilterBar:SmartFilterBar>
  
-        <m:IconTabBar id="idIconTabBar" class="sapUiResponsiveContentPadding" expandable="true">
+        <m:IconTabBar id="idIconTabBar4" class="sapUiResponsiveContentPadding" expandable="true">
             <m:items>
                 
                 <m:IconTabFilter icon="sap-icon://inventory" text="Header/Client Data" key="general">
                         
-                    <smartForm:SmartForm id="smartForm"      title="Material Information"
+                    <smartForm:SmartForm id="smartForm4"      title="Material Information"
                                          flexEnabled="false" editable="true">
                         <smartForm:Group>
                             <smartForm:GroupElement>
@@ -73,8 +73,8 @@
                 </m:IconTabFilter>
 
                 <m:IconTabFilter icon="sap-icon://factory" text="Plants" key="plants">
-                    <smartTable:SmartTable id="plantsTable"               entitySet="xCOSxqmc_i_matplant" 
-                                            smartFilterId="smartFilterBar" header="Plant Details" 
+                    <smartTable:SmartTable id="plantsTable4"               entitySet="xCOSxqmc_i_matplant" 
+                                            smartFilterId="smartFilterBar4" header="Plant Details" 
                                             showRowCount="true"            enableExport="true"
                                             editable="false"                editTogglable="false"
                                             enableAutoColumnWidth="false"   tableType="ResponsiveTable"
@@ -112,8 +112,8 @@
                 </m:IconTabFilter>
 
                 <m:IconTabFilter icon="sap-icon://money-bills" text="Valuation" key="valuation">
-                    <smartTable:SmartTable id="valuationTable"            entitySet="xCOSxQMC_I_MATVAL" 
-                                            smartFilterId="smartFilterBar" header="Valuation Details" 
+                    <smartTable:SmartTable id="valuationTable4"            entitySet="xCOSxQMC_I_MATVAL" 
+                                            smartFilterId="smartFilterBar4" header="Valuation Details" 
                                             showRowCount="true"            enableExport="true"
                                             editable="false"                editTogglable="false"
                                             tableType="ResponsiveTable"    demandPopin="true"

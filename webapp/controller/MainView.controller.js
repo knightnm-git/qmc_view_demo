@@ -16,6 +16,8 @@ sap.ui.define([
         onGoToView3: function () {
             this.getOwnerComponent().getRouter().navTo("RouteView3");
         },
-
+        onGoToView4: function () {
+            this.getOwnerComponent().getRouter().navTo("RouteView3");
+        }
     });
 });
