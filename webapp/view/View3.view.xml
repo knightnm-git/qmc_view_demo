@@ -5,107 +5,123 @@
     xmlns:smartForm="sap.ui.comp.smartform"
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns:m="sap.m"
     height="100%">
 
-    <m:Page id="page" title="Material Master Explorer">
-        <m:content>
-            <smartFilterBar:SmartFilterBar 
+    <m:Page id="page" title="Cosol - Quick Material Create" 
+            showNavButton="true" navButtonPress="onNavBack">
+        <smartFilterBar:SmartFilterBar 
                 id="smartFilterBar" 
                 entitySet="xCOSxqmc_i_MatHdr" 
-                persistencyKey="PKeyMaterialSearch" 
-                search="onSearch">
-                <smartFilterBar:controlConfiguration>
-                    <smartFilterBar:ControlConfiguration 
-                        key="Material" 
-                        visibleInAdvancedArea="true" 
-                        preventInitialDataFetchInValueHelpDialog="true"
-                        filterType="single"
-                        index="0" />
-                </smartFilterBar:controlConfiguration>
-            </smartFilterBar:SmartFilterBar>
-
-            <m:IconTabBar id="idIconTabBar" class="sapUiResponsiveContentPadding" expandable="false">
-                <m:items>
-                    
-                    <m:IconTabFilter icon="sap-icon://inventory" text="General Data" key="general">
-                        
-                            
-                        <smartForm:SmartForm 
-                            id="smartForm"
-                            title="Material Information"
-                            flexEnabled="false">
-                            
-                            <smartForm:Group>
-                               
-                                
-                                <smartForm:GroupElement>
-                                    <smartField:SmartField value="{Description}" />
-                                </smartForm:GroupElement>
-                                
-                                <smartForm:GroupElement>
-                                    <smartField:SmartField value="{MatType}" />
-                                </smartForm:GroupElement>
-
-                                <smartForm:GroupElement>
-                                    <smartField:SmartField value="{MatGroup}" />
-                                </smartForm:GroupElement>
-
-                                <smartForm:GroupElement>
-                                    <smartField:SmartField value="{BaseUOM}" />
-                                </smartForm:GroupElement>
-                                <smartForm:GroupElement>
-                                    <smartField:SmartField value="{GrossWeight}" />
-                                </smartForm:GroupElement>
-                                <smartForm:GroupElement>
-                                    <smartField:SmartField value="{NetWeight}" />
-                                </smartForm:GroupElement>     
-                                 <smartForm:GroupElement>
-                                    <smartField:SmartField value="{Manufacturer}" />
-                                </smartForm:GroupElement>
-                                 <smartForm:GroupElement>
-                                    <smartField:SmartField value="{ManufPartNo}" />
-                                </smartForm:GroupElement>
-                                 <smartForm:GroupElement>
-                                    <smartField:SmartField value="{BatchMgmtRqt}" />
-                                </smartForm:GroupElement>
-                                 <smartForm:GroupElement>
-                                    <smartField:SmartField value="{Industry}" />
-                                </smartForm:GroupElement>                                                           
-                            </smartForm:Group>
-                            
-                        </smartForm:SmartForm>                        
-    
-    
+                
+                search="onSearch" showFilterConfiguration="false">
+            <smartFilterBar:controlConfiguration>
+                <smartFilterBar:ControlConfiguration 
+                    key="Material" 
+                    label="Template Material"
+                    visibleInAdvancedArea="true" 
+                    preventInitialDataFetchInValueHelpDialog="true"
+                    filterType="single"
+                    index="0" 
+                    mandatory= "mandatory"
+                    />
+            </smartFilterBar:controlConfiguration>
+        </smartFilterBar:SmartFilterBar>
  
-                    </m:IconTabFilter>
-
-                    <m:IconTabFilter icon="sap-icon://factory" text="Plants" key="plants">
-                        <smartTable:SmartTable 
-    id="plantsTable"
-    entitySet="xCOSxqmc_i_matplant" 
-    smartFilterId="smartFilterBar"
-    header="Plant Details" 
-    showRowCount="true"
-    enableExport="true"
-    initiallyVisibleFields="Plant,MRPType,LotSize,MRPCtrl,StrLocExtProc" />
-                    </m:IconTabFilter>
-
-                    <m:IconTabFilter icon="sap-icon://money-bills" text="Valuation" key="valuation">
+        <m:IconTabBar id="idIconTabBar" class="sapUiResponsiveContentPadding" expandable="true">
+            <m:items>
+                
+                <m:IconTabFilter icon="sap-icon://inventory" text="Header/Client Data" key="general">
                         
+                    <smartForm:SmartForm id="smartForm"      title="Material Information"
+                                         flexEnabled="false" editable="true">
+                        <smartForm:Group>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{Description}" />
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{MatType}" editable="false"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{MatGroup}" editable="true"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{BaseUOM}" editable="true"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{GrossWeight}" editable="true"/>
+                            </smartForm:GroupElement>
+                            <smartForm:GroupElement>
+                                <smartField:SmartField value="{NetWeight}" editable="true"/>
+                            </smartForm:GroupElement>     
+                                <smartForm:GroupElement>
+                                <smartField:SmartField value="{Manufacturer}" editable="true"/>
+                            </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                                <smartField:SmartField value="{ManufPartNo}" editable="true"/>
+                            </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                                <smartField:SmartField value="{BatchMgmtRqt}" editable="true"/>
+                            </smartForm:GroupElement>
+                                <smartForm:GroupElement>
+                                <smartField:SmartField value="{Industry}" editable="true"/>
+                            </smartForm:GroupElement>                                                           
+                        </smartForm:Group>
+                    </smartForm:SmartForm>                        
 
-<smartTable:SmartTable 
-    id="valuationTable"
-    entitySet="xCOSxQMC_I_MATVAL" 
-    smartFilterId="smartFilterBar"
-    header="Valuation Details" 
-    showRowCount="true"
-    enableExport="true"
-    initiallyVisibleFields="ValArea,ValType,Prc_Control,MovAvgPrice,StdPrice, PriceUnit,ValClass,ValCat" />
-                    </m:IconTabFilter>
+                </m:IconTabFilter>
 
-                </m:items>
-            </m:IconTabBar>
-        </m:content>
+                <m:IconTabFilter icon="sap-icon://factory" text="Plants" key="plants">
+                    <smartTable:SmartTable id="plantsTable"               entitySet="xCOSxqmc_i_matplant" 
+                                            smartFilterId="smartFilterBar" header="Plant Details" 
+                                            showRowCount="true"            enableExport="true"
+                                            editable="false"                editTogglable="false"
+                                            enableAutoColumnWidth="false"   tableType="ResponsiveTable"
+                                            initiallyVisibleFields="Plant,MRPType,LotSize,MRPCtrl" > 		
+                       
+    
+                        <!-- The SmartTable will inject its OData columns into this inner sap.m.Table -->
+                        <m:Table>
+                            <m:columns>
+                                <!-- 1. Define the Custom Column Header -->
+                                <m:Column>
+                                    <m:customData>
+                                        <!-- Critical for Personalization/P13n -->
+                                        <core:CustomData key="p13nData" 
+                                            value='\{"columnKey": "CreateForPlantCol", "leadingProperty": "Plant", "columnIndex": 0}' />
+                                    </m:customData>
+                                    <m:Text text="Create for Plant" />
+                                </m:Column>
+                            </m:columns>
+                            
+                            <m:items>
+                                <m:ColumnListItem>
+                                    <m:cells>
+                                        <!-- 2. Define the Checkbox Cell -->
+                                        <m:CheckBox 
+                                            selected="{path: 'IsMarkedForCreation'}" 
+                                            select="onPlantSelect" />
+                                    </m:cells>
+                                </m:ColumnListItem>
+                            </m:items>
+                        </m:Table>
+                    </smartTable:SmartTable>
+
+	
+                </m:IconTabFilter>
+
+                <m:IconTabFilter icon="sap-icon://money-bills" text="Valuation" key="valuation">
+                    <smartTable:SmartTable id="valuationTable"            entitySet="xCOSxQMC_I_MATVAL" 
+                                            smartFilterId="smartFilterBar" header="Valuation Details" 
+                                            showRowCount="true"            enableExport="true"
+                                            editable="false"                editTogglable="false"
+                                            tableType="ResponsiveTable"    demandPopin="true"
+                                            initiallyVisibleFields="ValArea,ValType,Prc_Control,MovAvgPrice,StdPrice,PriceUnit,ValClass,ValCat" />
+                </m:IconTabFilter>
+
+            </m:items>
+        </m:IconTabBar>
+    
     </m:Page>
 </mvc:View>
