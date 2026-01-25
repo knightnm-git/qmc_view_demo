@@ -2,14 +2,15 @@
     <SelectDialog
         id="materialSelectDialog"
         title="Select Material"
+        contentWidth="25%"
         search=".onValueHelpSearch"
         confirm=".onValueConfirm"
         cancel=".onValueHelpClose"
         items="{path: 'headerDetail>/I_MaterialVH'}"
         growing="true"
         growingThreshold="10" > <StandardListItem
-            title="{headerDetail>Material}"
-            description="{headerDetail>Material_Text}"
+            title="{headerDetail>Material_Text}"
+            description="{headerDetail>Material}"
             info="{headerDetail>MaterialType}" />
     </SelectDialog>
 </core:FragmentDefinition>
