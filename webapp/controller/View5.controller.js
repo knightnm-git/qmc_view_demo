@@ -2,7 +2,7 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller"
 ], function (Controller) {
     "use strict";
-    return Controller.extend("cos.qmc.views.qmcviewdemo.controller.View4", {
+    return Controller.extend("cos.qmc.views.qmcviewdemo.controller.View5", {
         onNavBack: function () {
 
             this.getOwnerComponent().getRouter().navTo("RouteMainView");
@@ -16,7 +16,7 @@ sap.ui.define([
         },
 
         onSearch: function (oEvent) {
-          
+           
             // 1. Get references to the controls
             var oSmartFilterBar = this.byId("smartFilterBar4");
             var oSmartForm = this.byId("smartForm4");
@@ -46,7 +46,7 @@ sap.ui.define([
 
             var oDataModel = this.getOwnerComponent().getModel();
             // var sSelectedMaterial = this.getView().byId("product1").getSelectedKey();
-            var sSelectedMaterial = this.getView().byId("materialInput").getValue();
+            var sSelectedMaterial = this.getView().byId("materialInput5").getValue();
             var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')";
             //var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')?sap-client=110";
             // Diagnostic: Is the model actually there?
@@ -84,7 +84,7 @@ sap.ui.define([
             if (!this._oValueHelpDialog) {
                 // Create the dialog via fragment
                 this._oValueHelpDialog = sap.ui.xmlfragment(
-                    "cos.qmc.views.qmcviewdemo.view.fragments.MaterialValueHelp",
+                    "cos.qmc.views.qmcviewdemo.view.fragments.MaterialValueHelpView5",
                     this
                 );
                 this.getView().addDependent(this._oValueHelpDialog);
@@ -102,11 +102,11 @@ sap.ui.define([
             var oFilter = new sap.ui.model.Filter("Material", sap.ui.model.FilterOperator.Contains, sValue);
             oEvent.getSource().getBinding("items").filter([oFilter]);
         },
-        
+ 
         onValueHelpClose: function (oEvent) {
-           
+            
             var oSelectedItem = oEvent.getParameter("selectedItem");
-            var oInput = this.byId("materialInput"); // Get reference to your Input
+            var oInput = this.byId("materialInput5"); // Get reference to your Input
 
             if (!oSelectedItem) {
                 return;

@@ -141,6 +141,13 @@
           "target": [
             "TargetView4"
           ]
+        },
+        {
+          "name": "RouteView5",
+          "pattern": "view5",
+          "target": [
+            "TargetView5"
+          ]
         }
       ],
       "targets": {
@@ -160,9 +167,13 @@
           "viewName": "View3",
           "viewId": "View3"
         },
-        "TargetView3": {
+        "TargetView4": {
           "viewName": "View4",
           "viewId": "View4"
+        },
+        "TargetView5": {
+          "viewName": "View5",
+          "viewId": "View5"
         }
       }
     },

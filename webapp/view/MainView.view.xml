@@ -9,6 +9,7 @@
                 <Button text="View 2" press="onGoToObject"/>
                 <Button text="View 3" press="onGoToView3"/>
                 <Button text="View 4" press="onGoToView4"/>
+                <Button text="View 5" press="onGoToView5"/>
             </VBox>
         </content>
     </Page>

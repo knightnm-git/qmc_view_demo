@@ -8,17 +8,17 @@
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartForm="sap.ui.comp.smartform"
     height="100%"
-    controllerName="cos.qmc.views.qmcviewdemo.controller.View4">
+    controllerName="cos.qmc.views.qmcviewdemo.controller.View5">
     
-    <ObjectPageLayout id="ObjectPageLayout4" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showFooter="true">
+    <ObjectPageLayout id="ObjectPageLayout5" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showFooter="true">
 
         <headerTitle>
             <ObjectPageDynamicHeaderTitle>
                 <expandedHeading>
-                    <m:Title text="Cosol - Quick Material Create - View 4" wrapping="true"/>
+                    <m:Title text="Cosol - Quick Material Create - View 5" wrapping="true"/>
                 </expandedHeading>
                 <snappedHeading>
-                    <m:Title text="Cosol - Quick Material Create" wrapping="true"/>
+                    <m:Title text="Cosol - Quick Material Create - View 5" wrapping="true"/>
                 </snappedHeading>
                     <navigationActions>
                         <m:Button 
@@ -39,7 +39,7 @@
         <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
             <m:Label text="Material" width="150px" labelFor="materialInput" />
             <m:Input
-                id="materialInput"
+                id="materialInput5"
                 value="{/Material}"
                 placeholder="Select Material..."
                 showValueHelp="true"
@@ -130,7 +130,7 @@
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
-                            <m:Table id="itemsTable4.1" items="{/to_Plants/results}">
+                            <m:Table id="itemsTable5.1" items="{/to_Plants/results}">
                                 <m:columns>
                                     <m:Column><m:Text text="Create for Plant" /></m:Column>
                                     <m:Column><m:Text text="Plant" /></m:Column>
@@ -144,7 +144,7 @@
                             <m:items>
                         <m:ColumnListItem>
                             <m:cells>
-                                <m:CheckBox id="CreateForPlant4" selected="true" />
+                                <m:CheckBox id="CreateForPlant5" selected="true" />
                                 <m:Text text="{Plant}" />
                                 <m:Text text="{MRPType}" />
                                 <m:Input value="{LotSize}" width="3rem" />
@@ -167,7 +167,7 @@
                     <ObjectPageSubSection>
                         <blocks>
 
-                            <m:Table items="{/to_Valuation/results}" id="itemsTable4.2" sticky="HeaderToolbar,ColumnHeaders">
+                            <m:Table items="{/to_Valuation/results}" id="itemsTable5.2" sticky="HeaderToolbar,ColumnHeaders">
                                 <m:columns>
                                     <m:Column><m:Text text="ValA" /></m:Column>
                                     <m:Column><m:Text text="Val. Type" /></m:Column>

@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <TableSelectDialog
+    id="materialVHDialog"
+    title="Search Materials"
+    search=".onMaterialValueHelpSearch"
+    confirm=".onMaterialValueHelpConfirm"
+    growing="true"
+    growingThreshold="20"> <!-- Limits initial fetch to 20 records -->
+    <columns>
+        <Column><header><Text text="Material" /></header></Column>
+        <Column><header><Text text="Description" /></header></Column>
+    </columns>
+    <!-- DO NOT put the items path here yet -->
+</TableSelectDialog>
+
+</core:FragmentDefinition>
+
