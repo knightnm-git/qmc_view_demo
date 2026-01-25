@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <SelectDialog
+        id="materialSelectDialog7"
+        title="Select Material"
+        contentWidth="25%"
+        search=".onValueHelpSearch"
+        confirm=".onValueConfirm"
+        cancel=".onValueHelpClose"
+        items="{path: 'headerDetail>/I_MaterialVH'}"
+        growing="true"
+        growingThreshold="10" > <StandardListItem
+            title="{headerDetail>Material_Text}"
+            description="{headerDetail>Material}"
+            info="{headerDetail>MaterialType}" />
+    </SelectDialog>
+</core:FragmentDefinition>
