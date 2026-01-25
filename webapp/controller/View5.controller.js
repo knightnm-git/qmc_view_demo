@@ -8,47 +8,16 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().navTo("RouteMainView");
         },
         onInit: function () {
-            // No manual binding needed! 
-            // The SmartTable's 'smartFilterId' property handles the connection.
-            // This creates a context so the SmartField knows it is 
-            // allowed to display an input for the "Material" property
-            // this.getView().byId("headerSearchContainer").bindElement("/xCOSxqmc_i_MatHdr('')");
+
         },
 
-        onSearch: function (oEvent) {
-           
-            // 1. Get references to the controls
-            var oSmartFilterBar = this.byId("smartFilterBar4");
-            var oSmartForm = this.byId("smartForm4");
-            var oIconTabBar = this.byId("idIconTabBar4");
-
-            // 2. Get the selected Material ID
-            // getFilterData() returns an object like { Material: "MAT-100" }
-            var oFilterData = oSmartFilterBar.getFilterData();
-            var sMaterialId = oFilterData.Material;
-
-            if (sMaterialId) {
-                // 3. Create the OData Path for your specific record
-                // It must look like: /xCOSxqmc_i_MatHdr('MAT-100')
-                var sPath = "/xCOSxqmc_i_MatHdr('" + sMaterialId + "')";
-
-                // 4. Bind the data to the UI components
-                // This "points" the Form and the Tabs to the specific record data
-                oSmartForm.bindElement(sPath);
-                oIconTabBar.bindElement(sPath);
-
-                console.log("Context bound to: " + sPath);
-            } else {
-                sap.m.MessageToast.show("Please select a Material in the search bar first.");
-            }
-        },
         onRefresh: function () {
 
             var oDataModel = this.getOwnerComponent().getModel();
-            // var sSelectedMaterial = this.getView().byId("product1").getSelectedKey();
+
             var sSelectedMaterial = this.getView().byId("materialInput5").getValue();
             var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')";
-            //var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')?sap-client=110";
+
             // Diagnostic: Is the model actually there?
             if (!oDataModel) {
                 console.error("Model is missing!");
@@ -78,48 +47,148 @@ sap.ui.define([
                 console.error("Metadata promise failed:", oError);
             });
         },
-        onMaterialValueHelpRequest: function (oEvent) {
-            var sInputValue = oEvent.getSource().getValue();
+        onMaterialValueHelpRequest1: function () {
 
             if (!this._oValueHelpDialog) {
-                // Create the dialog via fragment
-                this._oValueHelpDialog = sap.ui.xmlfragment(
-                    "cos.qmc.views.qmcviewdemo.view.fragments.MaterialValueHelpView5",
-                    this
-                );
+                this._oValueHelpDialog = sap.ui.xmlfragment("cos.qmc.views.qmcviewdemo.view.fragments.MaterialValueHelpView5", this);
                 this.getView().addDependent(this._oValueHelpDialog);
+
+                // Define the columns for the internal table
+                var oColModel = new sap.ui.model.json.JSONModel({
+                    cols: [
+                        { label: "Material", template: "Material" },
+                        { label: "Description", template: "Material_Text" },
+                        { label: "Type", template: "MaterialType" }
+                    ]
+                });
+                this._oValueHelpDialog.getTableAsync().then(function (oTable) {
+                    oTable.setModel(oColModel, "columns");
+
+
+                    oTable.bindRows({
+                        path: "/I_MaterialVH",
+
+                    });
+
+                    if (oTable.setSelectionMode) {
+                        oTable.setSelectionMode("Single");
+                    }
+                }.bind(this));
+            }
+            this._oValueHelpDialog.open();
+        },
+        onValueHelpOk: function (oEvent) {
+            debugger;
+            var oValueHelpDialog = oEvent.getSource();
+            var aTokens = oEvent.getParameter("tokens");
+            var sKey;
+
+            if (aTokens && aTokens.length > 0) {
+                // Standard way: Get key from token
+                sKey = aTokens[0].getKey();
+            } else {
+                // Fail-safe way: Get it directly from the table's selection
+                var oTable = oValueHelpDialog.getTable();
+                var iSelectedIndex = oTable.getSelectedIndex();
+                if (iSelectedIndex !== -1) {
+                    var oContext = oTable.getContextByIndex(iSelectedIndex);
+                    sKey = oContext.getProperty("Material");
+                }
             }
 
-            // Open the dialog and filter by the current input value
-            this._oValueHelpDialog.getBinding("items").filter([
-                new sap.ui.model.Filter("Material", sap.ui.model.FilterOperator.Contains, sInputValue)
-            ]);
-            this._oValueHelpDialog.open(sInputValue);
+            if (sKey) {
+                var oModel = this.getView().getModel();
+
+                // 1. Explicitly set the property in the model
+                oModel.setProperty("/Material", sKey);
+
+                // 2. Force the Input field to show the value (backup)
+                var oInput = this.byId("materialInput5");
+                if (oInput) {
+                    oInput.setValue(sKey);
+                }
+
+                // 3. Optional: If using OData, you might need to trigger a refresh 
+                // if the model isn't "TwoWay"
+                // oModel.refresh(true); 
+
+                this._oValueHelpDialog.close();
+            }
+            else {
+                sap.m.MessageToast.show("Please select a material first.");
+            }
         },
 
-        onValueHelpSearch: function (oEvent) {
-            var sValue = oEvent.getParameter("value");
-            var oFilter = new sap.ui.model.Filter("Material", sap.ui.model.FilterOperator.Contains, sValue);
-            oEvent.getSource().getBinding("items").filter([oFilter]);
-        },
- 
-        onValueHelpClose: function (oEvent) {
-            
-            var oSelectedItem = oEvent.getParameter("selectedItem");
-            var oInput = this.byId("materialInput5"); // Get reference to your Input
+        onFilterBarSearch: function (oEvent) {
 
-            if (!oSelectedItem) {
-                return;
+            // selectionSet contains the input controls directly
+            var aSelectionSet = oEvent.getParameter("selectionSet");
+
+            var aFilters = aSelectionSet.reduce(function (aResult, oControl) {
+                // oControl is the actual Input, so we use oControl.getValue()
+                // We get the 'name' from the custom data or the ID we gave it
+                var sValue = oControl.getValue();
+                var sFieldName = oControl.getName(); // This matches the 'name' property in XML
+
+                if (sValue) {
+                    aResult.push(new sap.ui.model.Filter(sFieldName, "Contains", sValue));
+                }
+                return aResult;
+            }, []);
+
+            this._oValueHelpDialog.getTableAsync().then(function (oTable) {
+                oTable.getBinding("rows").filter(aFilters);
+            });
+        },
+
+        onValueHelpClose1: function () {
+            if (this._oValueHelpDialog) {
+                this._oValueHelpDialog.close();
+                // Optional: you can destroy it if you want to force 
+                // a clean reload of data next time it opens
+                this._oValueHelpDialog.destroy();
+                this._oValueHelpDialog = null;
+            }
+        },
+        onMaterialValueHelpRequest: function () {
+            // 1. If dialog doesn't exist, create it
+            if (!this._oValueHelpDialog) {
+                this._oValueHelpDialog = sap.ui.xmlfragment("cos.qmc.views.qmcviewdemo.view.fragments.MaterialValueHelpView5", this);
+                this.getView().addDependent(this._oValueHelpDialog);
+
+                // Define the columns (This only needs to happen once per creation)
+                var oColModel = new sap.ui.model.json.JSONModel({
+                    cols: [
+                        { label: "Material", template: "Material" },
+                        { label: "Description", template: "Material_Text" },
+                        { label: "Type", template: "MaterialType" }
+                    ]
+                });
+
+                this._oValueHelpDialog.getTableAsync().then(function (oTable) {
+                    oTable.setModel(oColModel, "columns");
+
+                    oTable.bindRows({
+                        path: "/I_MaterialVH",
+
+                    });
+
+                    if (oTable.setSelectionMode) {
+                        oTable.setSelectionMode("Single");
+                    }
+                }.bind(this));
             }
 
-            var sSelectedValue = oSelectedItem.getTitle();
+            // 2. Open the dialog
+            this._oValueHelpDialog.open();
+        },
 
-            // Option A: Update via the model (Best practice for unnamed models)
-            var oModel = this.getView().getModel();
-            oModel.setProperty("/Material", sSelectedValue);
-
-            // Option B: Hard-set the value if the binding doesn't refresh
-            oInput.setValue(sSelectedValue);
-        }
+        onValueHelpClose: function () {
+            if (this._oValueHelpDialog) {
+                // CLOSE instead of DESTROY. 
+                // This keeps the instance alive for the second click.
+                this._oValueHelpDialog.close();
+            }
+        },
     });
 });
