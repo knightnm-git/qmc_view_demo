@@ -11,6 +11,15 @@
 
     <m:Page id="page" title="Cosol - Quick Material Create - View 3" 
             showNavButton="true" navButtonPress="onNavBack">
+        <m:VBox>
+            <m:Text text="This View demonstrates a value help using a SmartFilter completely driven by metadata"/>
+            <m:Text text="We could not use a smartfield as the OData Metadata has the Material field as read only"/>
+            <m:Text text="The rest of the view uses an Icon Tab Bar and Smart Tables driven my MetaData"/>        
+            <m:Text text="An extra custom field is also added to the Plants table"/>        
+
+            <m:ObjectStatus text="View Active" state="Success" />
+            <m:Text text=" " />
+        </m:VBox>
         <smartFilterBar:SmartFilterBar 
                 id="smartFilterBar" 
                 entitySet="xCOSxqmc_i_MatHdr" 

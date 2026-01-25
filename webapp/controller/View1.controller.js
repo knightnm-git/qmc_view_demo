@@ -12,10 +12,24 @@ sap.ui.define([
         },
         onRefresh: function () {
             debugger;
+            var oInput = this.byId("product1");
+            var sValue = oInput.getValue();
+
+            if (!sValue) {
+                // Set the field to a red Error state
+                oInput.setValueState("Error");
+                oInput.setValueStateText("Please enter a Material before proceeding");
+
+                sap.m.MessageToast.show("Required fields are missing");
+                return; // Stop the function here
+            } else {
+                // Clear the error if they fixed it
+                oInput.setValueState("None");
+            }
             var oDataModel = this.getOwnerComponent().getModel("headerDetail");
-           // var sSelectedMaterial = this.getView().byId("product1").getSelectedKey();
-           var sSelectedMaterial = this.getView().byId("product1").getValue(); 
-           var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')";
+            // var sSelectedMaterial = this.getView().byId("product1").getSelectedKey();
+            var sSelectedMaterial = this.getView().byId("product1").getValue();
+            var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')";
             //var sPath = "/xCOSxqmc_i_MatHdr(Material='" + sSelectedMaterial + "')?sap-client=110";
             // Diagnostic: Is the model actually there?
             if (!oDataModel) {
@@ -46,7 +60,14 @@ sap.ui.define([
                 console.error("Metadata promise failed:", oError);
             });
         },
-
+        onInputChange: function (oEvent) {
+            var oInput = oEvent.getSource();
+            if (oInput.getValue()) {
+                oInput.setValueState("None");
+            } else {
+                oInput.setValueState("Error");
+            }
+        },
         onMaterialValueHelpRequest: function (oEvent) {
             debugger;
             var oView = this.getView();
@@ -111,7 +132,7 @@ sap.ui.define([
                 var sMaterial = oSelectedItem.getCells()[0].getText();
                 this.byId("materialInput").setValue(sMaterial);
             }
-                oEvent.getSource().unbindItems();
+            oEvent.getSource().unbindItems();
         },
 
 

@@ -32,122 +32,131 @@
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
 
-<headerContent>
-<m:VBox width="450px" class="sapUiNoContentPadding">
-    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-        <m:Label text="Material" labelFor="materialInput" />
-    <m:Input
-    id="product1"
-    placeholder="Select Material..."
-    showValueHelp="true"
-    valueHelpRequest=".onMaterialValueHelpRequest" />
- 
-    </m:HBox>
-
-    <m:HBox alignItems="Center">
-        <m:Label text="Test Run" width="150px" />
-        <m:Switch state="true" customTextOn="Yes" customTextOff="No" />
-    </m:HBox>
-</m:VBox>
-</headerContent>
-
+        <headerContent>
+            <m:VBox>
+                <m:Text text="This View has no value help but has a validation to make Template Material Mandatory"/>
+                
+                <m:Text text="The rest of the view uses an Object Page Layout with a Simple form for the Template Material entry,"/>        
+                <m:Text text="a normal std 2 column form for the header details and 2 responsive tables for the Plant and Valuation Data"/>        
+                <m:Text text="Logic is not yet added for changes in the Template Material"/>  
+                <m:ObjectStatus text="View InActive" state="Error" />
+                <m:Text text=" " />
+            </m:VBox>
+            <m:VBox width="450px" class="sapUiNoContentPadding">
+               
+                <f:SimpleForm editable="true" layout="ResponsiveGridLayout" >
+                    <f:content>
+                        <m:Label text="Template Material" required="true" labelFor="product1" />
+                        <m:Input 
+                            id="product1" 
+                            placeholder="Enter Material..." 
+                            required="true"
+                            valueStateText="This field is mandatory" 
+                            liveChange=".onInputChange"/>
+                        <m:Label text="Test Run" width="150px" />
+                        <m:Switch state="true" customTextOn="Yes" customTextOff="No" />
+                    </f:content>
+                </f:SimpleForm>
+                
+            </m:VBox>
+        </headerContent>
 
         <sections>
-            <ObjectPageSection title="Header/Client Data (normal Form 2 columns)">
+            <ObjectPageSection title="Header/Client Data">
           
-        <subSections>
-            <ObjectPageSubSection >
+                <subSections>
+                    <ObjectPageSubSection >
 
-            <l:Grid defaultSpan="L6 M6 S12" vSpacing="0" hSpacing="0">
-        <l:content>
+                        <l:Grid defaultSpan="L6 M6 S12" vSpacing="0" hSpacing="0">
+                            <l:content>
             
-            <m:VBox>
-                <m:items>
-                    
-                    
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Material" width="140px" textAlign="Begin" />
-                        <m:Text text="generated on save" width="100%" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Description" width="140px" textAlign="Begin" />
-                        <m:Input value="{/field2}" placeholder="provide a description...." width="240px" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Material Type" width="140px" textAlign="Begin" />
-                        <m:Text text="{headerDetail>/MatType}" width="100%" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Material Group" width="140px" textAlign="Begin" />
-                        <m:Input value="{headerDetail>/MatGroup}" width="80px" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="PC" width="140px" textAlign="Begin" />
-                        <m:Input value="{headerDetail>/BaseUnit}" width="50px" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Gross Weight" width="140px" textAlign="Begin" />
-                        <m:Input value="{headerDetail>/GrossWeight}" width="100px" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Net Weight" width="140px" textAlign="Begin" />
-                        <m:Input value="{headerDetail>/NetWeight}" width="100px" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Weight Unit" width="140px" textAlign="Begin" />
-                        <m:Input value="{headerDetail>/WeightUnit}" width="50px" />
-                    </m:HBox>
-                </m:items>
-            </m:VBox>
+                                <m:VBox>
+                                    <m:items>
+                                        
+                                        
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Material" width="140px" textAlign="Begin" />
+                                            <m:Text text="generated on save" width="100%" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Description" width="140px" textAlign="Begin" />
+                                            <m:Input value="{/field2}" placeholder="provide a description...." width="240px" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Material Type" width="140px" textAlign="Begin" />
+                                            <m:Text text="{headerDetail>/MatType}" width="100%" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Material Group" width="140px" textAlign="Begin" />
+                                            <m:Input value="{headerDetail>/MatGroup}" width="80px" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="PC" width="140px" textAlign="Begin" />
+                                            <m:Input value="{headerDetail>/BaseUnit}" width="50px" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Gross Weight" width="140px" textAlign="Begin" />
+                                            <m:Input value="{headerDetail>/GrossWeight}" width="100px" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Net Weight" width="140px" textAlign="Begin" />
+                                            <m:Input value="{headerDetail>/NetWeight}" width="100px" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Weight Unit" width="140px" textAlign="Begin" />
+                                            <m:Input value="{headerDetail>/WeightUnit}" width="50px" />
+                                        </m:HBox>
+                                    </m:items>
+                                </m:VBox>
 
-            <m:VBox>
-                <m:items>
-                  
-                    
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Manufacturer" width="140px" textAlign="Begin" />
-                        <m:Input value="{headerDetail>/Manufacturer}" width="90px" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Mfr Part Number" width="140px" textAlign="Begin" />
-                        <m:Input value="{headerDetail>/ManufPartNo}" width="110px" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Label 11" width="140px" textAlign="Begin" />
-                        <m:Input value="{/field11}" width="100%" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Label 12" width="140px" textAlign="Begin" />
-                        <m:Input value="{/field12}" width="100%" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Label 13" width="140px" textAlign="Begin" />
-                        <m:Input value="{/field13}" width="100%" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Label 14" width="140px" textAlign="Begin" />
-                        <m:Input value="{/field14}" width="100%" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Label 15" width="140px" textAlign="Begin" />
-                        <m:Input value="{/field15}" width="100%" />
-                    </m:HBox>
-                    <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                        <m:Label text="Label 16" width="140px" textAlign="Begin" />
-                        <m:Input value="{/field16}" width="100%" />
-                    </m:HBox>
-                </m:items>
-            </m:VBox>
+                                <m:VBox>
+                                    <m:items>
+                                    
+                                        
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Manufacturer" width="140px" textAlign="Begin" />
+                                            <m:Input value="{headerDetail>/Manufacturer}" width="90px" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Mfr Part Number" width="140px" textAlign="Begin" />
+                                            <m:Input value="{headerDetail>/ManufPartNo}" width="110px" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Label 11" width="140px" textAlign="Begin" />
+                                            <m:Input value="{/field11}" width="100%" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Label 12" width="140px" textAlign="Begin" />
+                                            <m:Input value="{/field12}" width="100%" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Label 13" width="140px" textAlign="Begin" />
+                                            <m:Input value="{/field13}" width="100%" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Label 14" width="140px" textAlign="Begin" />
+                                            <m:Input value="{/field14}" width="100%" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Label 15" width="140px" textAlign="Begin" />
+                                            <m:Input value="{/field15}" width="100%" />
+                                        </m:HBox>
+                                        <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                            <m:Label text="Label 16" width="140px" textAlign="Begin" />
+                                            <m:Input value="{/field16}" width="100%" />
+                                        </m:HBox>
+                                    </m:items>
+                                </m:VBox>
 
-        </l:content>
-    </l:Grid>
+                           </l:content>
+                        </l:Grid>
                 
-            </ObjectPageSubSection>
-        </subSections>
+                    </ObjectPageSubSection>
+                </subSections>
     
             </ObjectPageSection>
 
-            <ObjectPageSection title="Plant Data (Responsive Table)">
+            <ObjectPageSection title="Plant Data">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
@@ -162,28 +171,25 @@
                                     <m:Column><m:Text text="Storage Bin" /></m:Column>
 
                                 </m:columns>
-                            <m:items>
-                        <m:ColumnListItem>
-                            <m:cells>
-                                <m:CheckBox id="CreateForPlant" selected="true" />
-                                <m:Text text="{headerDetail>Plant}" />
-                                <m:Text text="{headerDetail>MRPType}" />
-                                <m:Input value="{headerDetail>LotSize}" width="3rem" />
-                                <m:Input value="{headerDetail>MRPCtrl}" width="4rem" />
-                                <m:Input  value="{headerDetail>StrLocExtProc}"/>
-                                <m:Input  value="" placeholder="Enter Bin..."/>
-                            </m:cells>
-                        </m:ColumnListItem>
-
-                     
-
-                    </m:items>
+                                <m:items>
+                                    <m:ColumnListItem>
+                                        <m:cells>
+                                            <m:CheckBox id="CreateForPlant" selected="true" />
+                                            <m:Text text="{headerDetail>Plant}" />
+                                            <m:Text text="{headerDetail>MRPType}" />
+                                            <m:Input value="{headerDetail>LotSize}" width="3rem" />
+                                            <m:Input value="{headerDetail>MRPCtrl}" width="4rem" />
+                                            <m:Input  value="{headerDetail>StrLocExtProc}"/>
+                                            <m:Input  value="" placeholder="Enter Bin..."/>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
                             </m:Table>
                         </blocks>
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
-                        <ObjectPageSection title="Valuation Data (Responsive Table)">
+            <ObjectPageSection title="Valuation Data">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
@@ -200,40 +206,40 @@
                                     <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="Pr Unit" /></m:Column>
                                     <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="ValCl" /></m:Column>
                                     <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="ValCat" /></m:Column>
-                            </m:columns>
+                                </m:columns>
 
-                    <m:items>
-                        <m:ColumnListItem>
-                            <m:cells>
-                                 
-                                <m:Text text="{headerDetail>ValArea}" />
-                                <m:Text text="{headerDetail>ValType}" width="10rem" />
-                                <m:Text text="{headerDetail>Prc_Control}" width="3rem" />
-                                <m:Input value="{headerDetail>MovAvgPrice}" width="6rem"  />
-                                <m:Input value="{headerDetail>StdPrice}" width="6rem"/>
-                                <m:Text text="{headerDetail>Currency}" width="3rem" />
-                                <m:Input value="{headerDetail>PriceUnit}" width="1rem"/>
-                                <m:Input value="{headerDetail>ValClass}" width="5rem"/>
-                                <m:Text text="{headerDetail>ValCat}" width="3rem" />
-                                
-                            </m:cells>
-                        </m:ColumnListItem>
-                                           
-                    </m:items>
-                </m:Table>
+                                <m:items>
+                                    <m:ColumnListItem>
+                                        <m:cells>
+                                            
+                                            <m:Text text="{headerDetail>ValArea}" />
+                                            <m:Text text="{headerDetail>ValType}" width="10rem" />
+                                            <m:Text text="{headerDetail>Prc_Control}" width="3rem" />
+                                            <m:Input value="{headerDetail>MovAvgPrice}" width="6rem"  />
+                                            <m:Input value="{headerDetail>StdPrice}" width="6rem"/>
+                                            <m:Text text="{headerDetail>Currency}" width="3rem" />
+                                            <m:Input value="{headerDetail>PriceUnit}" width="1rem"/>
+                                            <m:Input value="{headerDetail>ValClass}" width="5rem"/>
+                                            <m:Text text="{headerDetail>ValCat}" width="3rem" />
+                                            
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                                    
+                                </m:items>
+                            </m:Table>
 
                         </blocks>
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
         </sections>
-<footer>
-        <m:OverflowToolbar>
-            <m:ToolbarSpacer />
-            <m:Button type="Emphasized" text="Create New Material" press="onSave" icon="sap-icon://create"/>
-            <m:Button text="Cancel" press="onCancel" />
-        </m:OverflowToolbar>
-    </footer>
+        <footer>
+            <m:OverflowToolbar>
+                <m:ToolbarSpacer />
+                <m:Button type="Emphasized" text="Create New Material" press="onSave" icon="sap-icon://create"/>
+                <m:Button text="Cancel" press="onCancel" />
+            </m:OverflowToolbar>
+        </footer>
     </ObjectPageLayout>
 
   

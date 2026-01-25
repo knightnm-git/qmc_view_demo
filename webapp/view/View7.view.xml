@@ -35,6 +35,17 @@
         </headerTitle>
 
 <headerContent>
+
+    <m:VBox>
+        <m:Text text="This View demonstrates a value help using a Table Select Dialog"/>
+        <m:Text text="It has a standard 2 column form for the Header details"/>
+        <m:Text text="and 2 responsive tables for the Plant and Valuation Data"/>
+        <m:Text text="The view demonstrates auto refresh of the data on selection or entry of a new material"/>
+        <m:ObjectStatus text="View Active" state="Success" />
+        <m:Text text=" " />
+    </m:VBox>
+
+
     <m:VBox width="450px" class="sapUiNoContentPadding">
         <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
             <m:Label text="Template Material" width="150px" labelFor="materialInput7" />
@@ -44,8 +55,7 @@
                 placeholder="Select Material..."
                 showValueHelp="true"
                 valueHelpRequest=".onMaterialValueHelpRequest"
-                change=".onMaterialChange" />
-                <m:Text text='Using Select Dialog'></m:Text>  
+                change=".onMaterialChange" />  
         </m:HBox>
 
         <m:HBox alignItems="Center">
@@ -89,6 +99,12 @@
                         <m:Label text="PC" width="140px" textAlign="Begin" />
                         <m:Input value="{/BaseUnit}" width="50px" />
                     </m:HBox>
+
+                </m:items>
+            </m:VBox>
+
+            <m:VBox>
+                <m:items>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Gross Weight" width="140px" textAlign="Begin" />
                         <m:Input value="{/GrossWeight}" width="100px" />
@@ -101,12 +117,6 @@
                         <m:Label text="Weight Unit" width="140px" textAlign="Begin" />
                         <m:Input value="{/WeightUnit}" width="50px" />
                     </m:HBox>
-                </m:items>
-            </m:VBox>
-
-            <m:VBox>
-                <m:items>
-                  
                     
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Manufacturer" width="140px" textAlign="Begin" />
@@ -128,7 +138,7 @@
     
             </ObjectPageSection>
 
-            <ObjectPageSection title="Plant Data (Responsive Table)">
+            <ObjectPageSection title="Plant Data">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
@@ -137,10 +147,10 @@
                                     <m:Column><m:Text text="Create for Plant" /></m:Column>
                                     <m:Column><m:Text text="Plant" /></m:Column>
                                     <m:Column><m:Text text="MRP Type" /></m:Column>
-                                    <m:Column><m:Text text="Lot Sizing" /></m:Column>
-                                    <m:Column><m:Text text="MRP Ctrlr" /></m:Column>
-                                    <m:Column><m:Text text="ST ExtProc" /></m:Column>
-                                    <m:Column><m:Text text="Storage Bin" /></m:Column>
+                                    <m:Column ><m:Text text="Lot Sizing" /></m:Column>
+                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="MRP Ctrlr" /></m:Column>
+                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="ST ExtProc" /></m:Column>
+                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="Storage Bin" /></m:Column>
 
                                 </m:columns>
                             <m:items>
@@ -164,7 +174,7 @@
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
-                        <ObjectPageSection title="Valuation Data (Responsive Table)">
+                        <ObjectPageSection title="Valuation Data">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
@@ -175,8 +185,8 @@
                                     <m:Column><m:Text text="Val. Type" /></m:Column>
                                     <m:Column><m:Text text="Pr." /></m:Column>
                                     <m:Column><m:Text text="MvAvgPrice" /></m:Column>
-                                    <m:Column><m:Text text="Std Price" /></m:Column>
-                                    <m:Column><m:Text text="Currency" /></m:Column>
+                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="Std Price" /></m:Column>
+                                    <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="Currency" /></m:Column>
 
                                     <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="Pr Unit" /></m:Column>
                                     <m:Column minScreenWidth="Tablet" demandPopin="true"><m:Text text="ValCl" /></m:Column>

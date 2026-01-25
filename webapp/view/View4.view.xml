@@ -87,6 +87,12 @@
                         <m:Label text="PC" width="140px" textAlign="Begin" />
                         <m:Input value="{/BaseUnit}" width="50px" />
                     </m:HBox>
+                    
+                </m:items>
+            </m:VBox>
+
+            <m:VBox>
+                <m:items>
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Gross Weight" width="140px" textAlign="Begin" />
                         <m:Input value="{/GrossWeight}" width="100px" />
@@ -99,12 +105,6 @@
                         <m:Label text="Weight Unit" width="140px" textAlign="Begin" />
                         <m:Input value="{/WeightUnit}" width="50px" />
                     </m:HBox>
-                </m:items>
-            </m:VBox>
-
-            <m:VBox>
-                <m:items>
-                  
                     
                     <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
                         <m:Label text="Manufacturer" width="140px" textAlign="Begin" />

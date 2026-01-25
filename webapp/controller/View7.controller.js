@@ -11,7 +11,7 @@ sap.ui.define([
 
             this.getOwnerComponent().getRouter().navTo("RouteMainView");
         },
-        
+
         onInit: function () {
             // Initialize the unnamed model immediately
             var oModel = new JSONModel({
@@ -33,11 +33,16 @@ sap.ui.define([
         onValueConfirm: function (oEvent) {
             var oSelectedItem = oEvent.getParameter("selectedItem");
             if (oSelectedItem) {
-                var sSelectedMaterial = oSelectedItem.getTitle();
-                // 1. Update the property in the unnamed model
+                // 1. Get the binding context specifically for the 'headerDetail' model
+                var oContext = oSelectedItem.getBindingContext("headerDetail");
+
+                // 2. Get the Material string from that context
+                var sSelectedMaterial = oContext.getProperty("Material");
+
+                // 3. Set it into your UNNAMED model (the one the View's Input uses)
                 this.getView().getModel().setProperty("/Material", sSelectedMaterial);
 
-                // 2. Trigger the refresh logic
+                // 4. Trigger the refresh to get the tables
                 this.onRefresh();
             }
         },
@@ -81,7 +86,8 @@ sap.ui.define([
             var oFilter = new Filter({
                 filters: [
                     new Filter("Material", FilterOperator.Contains, sValue),
-                    new Filter("Material_Text", FilterOperator.Contains, sValue)
+                    new Filter("Material_Text", FilterOperator.Contains, sValue),
+                    new Filter("MaterialType", FilterOperator.Contains, sValue) // Optional: search by type too
                 ],
                 and: false
             });

@@ -35,16 +35,24 @@
         </headerTitle>
 
 <headerContent>
+    <m:VBox>
+        <m:Text text="This View demonstrates a value help using a Value Help Dialog"/>
+        <m:Text text="I'd like to enhance this by adding a search bar up the top"/>
+        <m:Text text="It then uses a standard Form for the header data "/>
+        <m:Text text="and 2 responsive Tables for the Plant and Valuation Data "/>
+
+        <m:ObjectStatus text="View Active" state="Success" />
+        <m:Text text=" " />
+    </m:VBox>
     <m:VBox width="450px" class="sapUiNoContentPadding">
         <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-            <m:Label text="Template Material" width="150px" labelFor="materialInput5" />
+            <m:Label text="Material" width="150px" labelFor="materialInput" />
             <m:Input
                 id="materialInput5"
                 value="{/Material}"
                 placeholder="Select Material..."
                 showValueHelp="true"
                 valueHelpRequest=".onMaterialValueHelpRequest" />
-            <m:Text text=' Using Value Help Dialog'></m:Text>    
         </m:HBox>
 
         <m:HBox alignItems="Center">
@@ -56,7 +64,7 @@
 
 
         <sections>
-            <ObjectPageSection title="Header/Client Data (normal Form 2 columns)">
+            <ObjectPageSection title="Header/Client Data">
           
         <subSections>
             <ObjectPageSubSection >
@@ -127,7 +135,7 @@
     
             </ObjectPageSection>
 
-            <ObjectPageSection title="Plant Data (Responsive Table)">
+            <ObjectPageSection title="Plant Data">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
@@ -163,7 +171,7 @@
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
-                        <ObjectPageSection title="Valuation Data (Responsive Table)">
+                        <ObjectPageSection title="Valuation Data ">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>

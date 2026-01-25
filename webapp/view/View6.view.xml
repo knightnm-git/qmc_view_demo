@@ -35,6 +35,12 @@
         </headerTitle>
 
 <headerContent>
+    <m:VBox>
+        <m:Text text="This View demonstrates a value help using a Standard List Item Select Dialog"/>
+        
+        <m:ObjectStatus text="View Active" state="Success" />
+        <m:Text text=" " />
+    </m:VBox>
     <m:VBox width="450px" class="sapUiNoContentPadding">
         <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
             <m:Label text="Template Material" width="150px" labelFor="materialInput6" />
@@ -45,7 +51,7 @@
                 showValueHelp="true"
                 valueHelpRequest=".onMaterialValueHelpRequest"
                 change=".onMaterialChange" />
-                <m:Text text='Using Select Dialog'></m:Text>  
+                
         </m:HBox>
 
         <m:HBox alignItems="Center">

@@ -52,63 +52,39 @@
         </headerTitle>
 
         <headerContent>
-            <m:VBox
-                width="450px"
-                class="sapUiNoContentPadding"
-            >
-                <m:HBox
-                    alignItems="Center"
-                    class="sapUiTinyMarginBottom"
-                >
-                    <m:Label
-                        text="Template Material"
-                        width="150px"
-                    />
-                    <m:Select
-                        id="product2"
-                        selectedKey="{Product}"
-                        width="240px"
-                    >
+            <m:VBox>
+                <m:Text text="This View has just a hard coded select list of 3 possible materials"/>
+                
+                <m:Text text="The rest of the view uses an Object Page Layout with a normal 3 column form for the header"/>        
+                <m:Text text="and a grid table for the plants and valuation data"/>        
+                <m:Text text="binding in error and needs to be fixed"/> 
+                <m:ObjectStatus text="View InActive" state="Error" />
+                <m:Text text=" " />
+            </m:VBox>
+            <m:VBox width="450px" class="sapUiNoContentPadding">
+                <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                    <m:Label text="Template Material" width="150px" />
+                    <m:Select id="product2" selectedKey="{Product}" width="240px">
                         <m:items>
-                            <core:Item
-                                key="ID001"
-                                text="Product Alpha (ID001)"
-                            />
-                            <core:Item
-                                key="ID002"
-                                text="Product Beta (ID002)"
-                            />
-                            <core:Item
-                                key="ID003"
-                                text="Product Gamma (ID003)"
-                            />
+                            <core:Item key="R-302" text="Material R-302"/>
+                            <core:Item key="T_REPAIRABLE" text="Material T_REPAIRABLE"/>
+                            <core:Item key="R-311" text="Material R-311"/>
                         </m:items>
                     </m:Select>
                 </m:HBox>
 
                 <m:HBox alignItems="Center">
-                    <m:Label
-                        text="Test Run"
-                        width="150px"
-                    />
-                    <m:Switch
-                        state="true"
-                        customTextOn="Yes"
-                        customTextOff="No"
-                    />
+                    <m:Label text="Test Run" width="150px"/>
+                    <m:Switch state="true" customTextOn="Yes" customTextOff="No"/>
                 </m:HBox>
             </m:VBox>
         </headerContent>
 
         <sections>
-            <ObjectPageSection title="Header/Client Data (normal Form 3 columns)">
+            <ObjectPageSection title="Header/Client Data">
                 <subSections>
                     <ObjectPageSubSection>
-                        <l:Grid
-                            defaultSpan="L4 M4 S12"
-                            vSpacing="0"
-                            hSpacing="0"
-                        >
+                        <l:Grid defaultSpan="L4 M4 S12" vSpacing="0" hSpacing="0">
                             <l:content>
                                 <m:VBox>
                                     <m:items>
@@ -341,7 +317,7 @@
                 </subSections>
             </ObjectPageSection>
 
-            <ObjectPageSection title="Plant Data (Grid Table)">
+            <ObjectPageSection title="Plant Data">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
@@ -420,75 +396,70 @@
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
-            <ObjectPageSection title="Valuation Data (Responsive Table)">
+            <ObjectPageSection title="Valuation Data">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
-                            <m:Table
-                                id="itemsTable2.2"
-                                sticky="HeaderToolbar,ColumnHeaders"
-                                items="{demo>/demoVal}"
-                            >
-                                <m:columns>
-                                    <m:Column>
-                                        <m:Text text="ValA" />
-                                    </m:Column>
-                                    <m:Column>
-                                        <m:Text text="Val. Type" />
-                                    </m:Column>
-                                    <m:Column>
-                                        <m:Text text="Pr." />
-                                    </m:Column>
-                                    <m:Column>
-                                        <m:Text text="MvAvgPrice" />
-                                    </m:Column>
-                                    <m:Column>
-                                        <m:Text text="Std Price" />
-                                    </m:Column>
-                                    <m:Column
-                                        minScreenWidth="Tablet"
-                                        demandPopin="true"
-                                    >
-                                        <m:Text text="Pr Unit" />
-                                    </m:Column>
-                                    <m:Column
-                                        minScreenWidth="Tablet"
-                                        demandPopin="true"
-                                    >
-                                        <m:Text text="ValCl" />
-                                    </m:Column>
-                                    <m:Column
-                                        minScreenWidth="Tablet"
-                                        demandPopin="true"
-                                    >
-                                        <m:Text text="ValCat" />
-                                    </m:Column>
-                                </m:columns>
+                            <t:Table id="itemsTableValuation" rows="{/to_Valuation/results}"
+                                     selectionMode="None" alternateRowColors="true">
+                                <t:columns>
+                                    <t:Column width="6rem">
+                                        <m:Label text="ValA" />
+                                        <t:template>
+                                            <m:Text text="{ValArea}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
 
-                                <m:items>
-                                    <m:ColumnListItem>
-                                        <m:cells>
-                                            <m:Text text="{demo>ValArea}" />
-                                            <m:Text text="{demo>ValType}" />
-                                            <m:Text text="{demo>PrTyp}" />
-                                            <m:Text text="{demo>MvAvgPrice}" />
-                                            <m:Input
-                                                value="{demo>StdPrice}"
-                                                width="6rem"
-                                            />
-                                            <m:Input
-                                                value="{demo>PrUnit}"
-                                                width="3rem"
-                                            />
-                                            <m:Input
-                                                value="{demo>ValClass}"
-                                                width="5rem"
-                                            />
-                                            <m:Text text="{demo>ValCat}" />
-                                        </m:cells>
-                                    </m:ColumnListItem>
-                                </m:items>
-                            </m:Table>
+                                    <t:Column width="7rem">
+                                        <m:Label text="Val. Type" />
+                                        <t:template>
+                                            <m:Text text="{ValType}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="4rem">
+                                        <m:Label text="Pr." />
+                                        <t:template>
+                                            <m:Text text="{PrTyp}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="8rem">
+                                        <m:Label text="MvAvgPrice" />
+                                        <t:template>
+                                            <m:Text text="{MvAvgPrice}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="8rem">
+                                        <m:Label text="Std Price" />
+                                        <t:template>
+                                            <m:Input value="{StdPrice}" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="5rem">
+                                        <m:Label text="Pr Unit" />
+                                        <t:template>
+                                            <m:Input value="{PrUnit}" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="7rem">
+                                        <m:Label text="ValCl" />
+                                        <t:template>
+                                            <m:Input value="{ValClass}" />
+                                        </t:template>
+                                    </t:Column>
+
+                                    <t:Column width="6rem">
+                                        <m:Label text="ValCat" />
+                                        <t:template>
+                                            <m:Text text="{ValCat}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+                                </t:columns>
+                            </t:Table>
 
                         </blocks>
                     </ObjectPageSubSection>
