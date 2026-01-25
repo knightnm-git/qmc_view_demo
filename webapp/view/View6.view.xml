@@ -8,17 +8,17 @@
     xmlns:smartField="sap.ui.comp.smartfield"
     xmlns:smartForm="sap.ui.comp.smartform"
     height="100%"
-    controllerName="cos.qmc.views.qmcviewdemo.controller.View5">
+    controllerName="cos.qmc.views.qmcviewdemo.controller.View6">
     
-    <ObjectPageLayout id="ObjectPageLayout5" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showFooter="true">
+    <ObjectPageLayout id="ObjectPageLayout6" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showFooter="true">
 
         <headerTitle>
             <ObjectPageDynamicHeaderTitle>
                 <expandedHeading>
-                    <m:Title text="Cosol - Quick Material Create - View 5" wrapping="true"/>
+                    <m:Title text="Cosol - Quick Material Create - View 6" wrapping="true"/>
                 </expandedHeading>
                 <snappedHeading>
-                    <m:Title text="Cosol - Quick Material Create - View 5" wrapping="true"/>
+                    <m:Title text="Cosol - Quick Material Create - View 6" wrapping="true"/>
                 </snappedHeading>
                     <navigationActions>
                         <m:Button 
@@ -37,14 +37,15 @@
 <headerContent>
     <m:VBox width="450px" class="sapUiNoContentPadding">
         <m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-            <m:Label text="Template Material" width="150px" labelFor="materialInput5" />
+            <m:Label text="Template Material" width="150px" labelFor="materialInput6" />
             <m:Input
-                id="materialInput5"
+                id="materialInput6"
                 value="{/Material}"
                 placeholder="Select Material..."
                 showValueHelp="true"
-                valueHelpRequest=".onMaterialValueHelpRequest" />
-            <m:Text text=' Using Value Help Dialog'></m:Text>    
+                valueHelpRequest=".onMaterialValueHelpRequest"
+                change=".onMaterialChange" />
+                <m:Text text='Using Select Dialog'></m:Text>  
         </m:HBox>
 
         <m:HBox alignItems="Center">
@@ -131,7 +132,7 @@
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
-                            <m:Table id="itemsTable5.1" items="{/to_Plants/results}">
+                            <m:Table id="itemsTable6.1" items="{/to_Plants/results}">
                                 <m:columns>
                                     <m:Column><m:Text text="Create for Plant" /></m:Column>
                                     <m:Column><m:Text text="Plant" /></m:Column>
@@ -145,7 +146,7 @@
                             <m:items>
                         <m:ColumnListItem>
                             <m:cells>
-                                <m:CheckBox id="CreateForPlant5" selected="true" />
+                                <m:CheckBox id="CreateForPlant6" selected="true" />
                                 <m:Text text="{Plant}" />
                                 <m:Text text="{MRPType}" />
                                 <m:Input value="{LotSize}" width="3rem" />
@@ -168,7 +169,7 @@
                     <ObjectPageSubSection>
                         <blocks>
 
-                            <m:Table items="{/to_Valuation/results}" id="itemsTable5.2" sticky="HeaderToolbar,ColumnHeaders">
+                            <m:Table items="{/to_Valuation/results}" id="itemsTable6.2" sticky="HeaderToolbar,ColumnHeaders">
                                 <m:columns>
                                     <m:Column><m:Text text="ValA" /></m:Column>
                                     <m:Column><m:Text text="Val. Type" /></m:Column>

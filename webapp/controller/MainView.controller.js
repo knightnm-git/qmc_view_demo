@@ -23,6 +23,11 @@ sap.ui.define([
         onGoToView5: function () {
             debugger;
             this.getOwnerComponent().getRouter().navTo("RouteView5");    
+        },
+        
+        onGoToView6: function () {
+            debugger;
+            this.getOwnerComponent().getRouter().navTo("RouteView6");    
         }
     });
 });
