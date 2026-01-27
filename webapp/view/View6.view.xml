@@ -63,7 +63,7 @@
 
 
         <sections>
-            <ObjectPageSection title="Header/Client Data (normal Form 2 columns)">
+            <ObjectPageSection title="Header/Client Data">
           
         <subSections>
             <ObjectPageSubSection >
@@ -134,7 +134,7 @@
     
             </ObjectPageSection>
 
-            <ObjectPageSection title="Plant Data (Responsive Table)">
+            <ObjectPageSection title="Plant Data">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
@@ -170,7 +170,7 @@
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
-                        <ObjectPageSection title="Valuation Data (Responsive Table)">
+                        <ObjectPageSection title="Valuation Data">
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>

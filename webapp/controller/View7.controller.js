@@ -2,8 +2,9 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function (Controller, JSONModel, Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+    "sap/m/MessageBox"
+], function (Controller, JSONModel, Filter, FilterOperator, MessageBox) {
     "use strict";
 
     return Controller.extend("cos.qmc.views.qmcviewdemo.controller.View7", {
@@ -74,9 +75,47 @@ sap.ui.define([
                     // IMPORTANT: 'true' merges data. 
                     // It keeps {/Material} and adds {/to_Plants}, etc.
                     oViewModel.setData(oData, true);
+                    
                 }.bind(this),
-                error: function () {
+                error: function (oError) {
+                    debugger;
+
                     this.getView().setBusy(false);
+                    let sMessage = oError.message; //"An unexpected error occurred.";
+                    let aMessages = [];
+
+                    try {
+                        const oResponse = JSON.parse(oError.responseText);
+                        const oErr = oResponse?.error;
+
+                        // Get the main top-level messages
+                        // Filter out undefined/null/empty values, then join with a separator
+                        sMessage = [oError.message, oErr?.message?.value]
+                            .filter(Boolean)      // Removes undefined, null, or empty strings
+                            .join(": ");          // Joins them with a colon and space
+
+                        // 2. Check for business-level details (errordetails)
+                        const aDetails = oErr?.innererror?.errordetails || oErr?.details;
+                        if (Array.isArray(aDetails)) {
+                            aMessages = aDetails.map(d => d.message);
+                        }
+
+                        // 3. Check for technical resolution (Error_Resolution)
+                        const oRes = oErr?.innererror?.Error_Resolution;
+                        if (oRes) {
+                            // Show technical steps to the user via the show more button
+                            if (oRes.SAP_Transaction) aMessages.push("Technical Info: " + oRes.SAP_Transaction);
+                            if (oRes.SAP_Note) aMessages.push("See SAP Note: " + oRes.SAP_Note);
+                        }
+
+                    } catch (e) {
+                        sMessage = "Technical Error: " + oError.statusCode;
+                    }
+
+                    sap.m.MessageBox.error(sMessage, {
+                        // details: combines all specific messages into the "Show More" section
+                        details: aMessages.length > 0 ? aMessages.join("\n") : null
+                    });
                 }.bind(this)
             });
         },

@@ -108,9 +108,8 @@
                                 <m:ColumnListItem>
                                     <m:cells>
                                         <!-- 2. Define the Checkbox Cell -->
-                                        <m:CheckBox 
-                                            selected="{path: 'IsMarkedForCreation'}" 
-                                            select="onPlantSelect" />
+                                        
+                                        <m:CheckBox selected="{= ${IsMarkedForCreation} !== false }" select="onPlantSelect" />
                                     </m:cells>
                                 </m:ColumnListItem>
                             </m:items>

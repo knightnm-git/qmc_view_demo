@@ -27,10 +27,7 @@
                           press="onNavBack" 
                           tooltip="Back"/>
                     </navigationActions>
-                <actions>
-                    <m:Button text="Refresh/Select Data" icon="sap-icon://refresh" type="Emphasized" press="onRefresh" />
-                     
-                </actions>
+
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
 
@@ -40,7 +37,8 @@
         <m:Text text="This View demonstrates a value help using a Table Select Dialog"/>
         <m:Text text="It has a standard 2 column form for the Header details"/>
         <m:Text text="and 2 responsive tables for the Plant and Valuation Data"/>
-        <m:Text text="The view demonstrates auto refresh of the data on selection or entry of a new material"/>
+        <m:Text text="The view demonstrates auto refresh of the data on selection or entry of a new material."/>
+        <m:Text text="No refresh button needed."/>
         <m:ObjectStatus text="View Active" state="Success" />
         <m:Text text=" " />
     </m:VBox>
