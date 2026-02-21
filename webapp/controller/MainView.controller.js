@@ -4,7 +4,7 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("cos.qmc.views.qmcviewdemo.controller.MainView", {
-
+        //Just add a comment to test Git
         
         onGoToList: function () {
             debugger;
